@@ -1,0 +1,42 @@
+{
+  "name": "auth-service-api",
+  "version": "1.0.0",
+  "description": "serveur d'authentification oauth2 d'easyclass Companing",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./dist/server/index.js",
+    "dev": "nodemon -r dotenv/config ./server/index.ts",
+    "build": "npx tsc"
+  },
+  "author": "dylEasyDev",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/body-parser": "^1.19.5",
+    "@types/cls-hooked": "^4.3.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/express-oauth-server": "^2.0.7",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/nodemailer": "^6.4.14",
+    "@types/sequelize": "^4.28.20",
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@node-oauth/express-oauth-server": "^4.0.0",
+    "axios": "^1.6.7",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cls-hooked": "^4.2.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.9.2",
+    "nodemailer": "^6.9.10",
+    "sequelize": "^6.37.1"
+  }
+}
