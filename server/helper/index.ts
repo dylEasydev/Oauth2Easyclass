@@ -4,8 +4,9 @@ import helpToken,{ GenrateToken } from './generateToken';
 import generateCode from './generateCode';
 import mailer from './sendmail';
 import { TableScope } from './scopeTable';
+import readScope from './readScope';
 
 export {
     statusResponse,StatusResponse,CodeStatut,upperCaseFirst,
-    GenrateToken,helpToken,generateCode,mailer,TableScope
+    GenrateToken,helpToken,generateCode,mailer,TableScope,readScope
 }

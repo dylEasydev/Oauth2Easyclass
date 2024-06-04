@@ -1,0 +1,18 @@
+{
+    "data": [
+     {
+         "scopeName":"created:admin",
+         "scopeDescript":"permissions de créer un admin"
+     },
+     {
+         "scopeName":"deleted:profil",
+         "scopeDescript":"permissions de supprimer son profil"
+     },
+     {
+         "scopeName":"updted:profil",
+         "scopeDescript":"permissions de mis à jour de son profil"
+     }
+    ]
+ }
+
+ 

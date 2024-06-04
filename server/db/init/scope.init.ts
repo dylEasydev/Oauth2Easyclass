@@ -1,8 +1,11 @@
 import { Scope } from '../models';
 import { DataTypes } from 'sequelize';
 import sequelizeConnect from '../config';
+import { readScope } from '../../helper';
 
-const scopeValid = ['created:admin']
+const scopeValid = readScope.readScopeApp('scopeApp').map(data=>{
+    return data.scopeName
+})
 
 Scope.init({
     id:{

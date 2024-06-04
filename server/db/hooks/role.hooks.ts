@@ -1,8 +1,6 @@
+import { readScope } from '../../helper';
 import {Role} from '../association';
-export const scopeApp = [{
-    scopeName:'created:admin',
-    scopeDescript:'permissions de créer un admin'
-}]
+export const scopeApp = readScope.readScopeApp('scopeApp');
 
 Role.afterCreate((role ,options)=>{
     return new Promise<void>((resolve, reject)=>{

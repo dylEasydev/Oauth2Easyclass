@@ -12,12 +12,14 @@ async function initData(){
     return new Promise<void>(async (resolve, reject) => {
         try {
             scopeApp.forEach(async s=>{
-                await Scope.findOrCreate({
-                    where:{scopeName:s.scopeName},
-                    defaults:{
-                        scopeDescript:s.scopeDescript,
-                        scopeName:s.scopeName
-                    }
+                await sequelizeConnect.transaction(async t=>{
+                    await Scope.findOrCreate({
+                        where:{scopeName:s.scopeName},
+                        defaults:{
+                            scopeDescript:s.scopeDescript,
+                            scopeName:s.scopeName
+                        }
+                    })
                 })
             })
             let adminFind= await User.findOne({where:{userName:process.env.ADMIN_NAME as string}});

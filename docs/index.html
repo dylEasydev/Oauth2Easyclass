@@ -7,20 +7,20 @@
 </head>
 <body>
     <header>
-        <h1>Bienvenue sur la documentation de api d'authentification Easy class service</h1>
-        <p>cette documentation est destiné à ceux qui connaissent faire des appel http côté client</p>
+        <h1>Bienvenue sur la documentation de l'api d'authentification d'Easy class service .</h1>
+        <p>Cette documentation est destinée à ceux cnnaissant faire des appels http .</p>
     </header>
     
     <sections>
-        <h2> point de terminaison: http://localhost:3000/docs</h2>
-        <p> type de méthode:  GET.</p>
-        <p> il permet d'accèder à la documentation de l'api Oauth2.0 D'easyClass</p>
+        <h2> Point de terminaison: <strong>http://localhost:3000/docs</strong>.</h2>
+        <p> Type de méthode: <strong> GET. </strong></p>
+        <p> Il permet d'accèder à la documentation de l'api Oauth2.0 D'easyClass</p>
     </sections>
 
     <sections>
-        <h2> point de terminaison: http://localhost:3000/</h2>
-        <p> type de méthode:  GET.</p>
-        <p> c'est le point de terminaison d'accueil !</p>
+        <h2> Point de terminaison: <strong>http://localhost:3000/</strong> .</h2>
+        <p> Type de méthode:  <strong>GET</strong> .</p>
+        <p> C'est le point de terminaison d'accueil !</p>
         <pre>
             <code>
                 {message:"Bienvenue sur oauth2-easyclass api !"}
@@ -29,31 +29,30 @@
     </sections>
 
     <section>
-        <h2> Point de terminaison : http://localhost:3000/code</h2>
-        <p> Type de Méthode: POST.</p>
-        <p>Format du corps de la requête: application/x-www-form-urlencoded</p>
+        <h2> Point de terminaison :<strong>http://localhost:3000/code</strong> .</h2>
+        <p> Type de Méthode: <strong>POST </strong>.</p>
+        <p>Format du corps de la requête:<strong> application/x-www-form-urlencoded </strong>.</p>
         <p>
-            Ce end point permet à un client (application) d'obtenir le code<br/> 
-            d'authorisation d'un utilisateur ayant valider votre accès et pourvoir<br/>
-            échanger ce code contre un jeton<br/>
-            ce code à une durée de 1 heure<br/> 
+            Ce end-point permet à un client (application) d'obtenir le code d'authorisation<br/> 
+            d'un utilisateur ayant valider votre accès et pourvoir l'échanger contre un jeton .<br/>
+            Ce code à une durée d'une heure .<br/> 
         </p>
         <pre>
-            <p> corps de la requête</p>
+            <p> Corps de la requête</p>
             <code>
                 {
-                    client_id:"15637", //identifiant du client qui demande le code d'authorization
-                    redirect_uri:"http://app.com/callback", //une des urls de redirection du client 
-                    scope: ,/*Les permissions qu'on veut pour l'utilisateur
+                    "client_id":"15637", //Identifiant du client(application) qui demande le code d'authorisation
+                    "redirect_uri":"http://app.com/callback", //une des urls de redirection du client 
+                    "scope": ,/*Les permissions qu'on veut pour l'utilisateur
                         exemple: 'created:admin,deleted:profil' ou 'created:admin' ou [created:admin,deleted:profil]
                     */
-                    state:"4",
-                    username:"username",
-                    password:"password",
-                    response_type:"code",//uniquement code est authoriser
-                    code_challenge:"monCodepourverifier"
-                    code_challenge_method:"plain"/*les options sont "plain"
-                    si le code_challenge ne sera pas n'est pas hachés
+                    "state":"4",
+                    "username":"username",
+                    "password":"password",
+                    "response_type":"code",//uniquement code est authoriser
+                    "code_challenge":"monCodepourverifier"
+                    "code_challenge_method":"plain"/*Les options sont "plain"
+                    si le code_challenge ne sera pas hachés,
                     ou "s256" si l'est hachés avec algorithmes sh256.*/ 
                 }
             </code>
@@ -66,24 +65,24 @@
         </pre>
     </section>
     
-    <sections>
-        <h2> point de terminaison: http://localhost:3000/login</h2>
-        <p> type de méthode:  POST.</p>
-        <p> ce point de terminaison permet de founir un jeton jwt d'accès avec different octroi!</p>
+    <section>
+        <h2> Point de terminaison:<strong> http://localhost:3000/login .</strong></h2>
+        <p> Type de méthode: <strong> POST.</strong></p>
+        <p> Ce point de terminaison permet de founir un jeton jwt d'accès avec different octroi!</p>
         <section>
             <h3>Octroi: password</h3>
             <section>
-                <p>Format du corps de la requête:  application/x-www-form-urlencoded </p>
+                <p>Format du corps de la requête:  <strong>application/x-www-form-urlencoded </strong> </p>
                 <p>Corps de la requête </p>
                 <pre>
                     <code>
                         {
-                            grant_type : "password",
-                            username :"username",
-                            password:"pasword",
-                            scope:"created:admin",
-                            client_id:"1899",
-                            client_secret:"aahjdkndhj"
+                            "grant_type" : "password",
+                            "username" :"username",
+                            "password":"pasword",
+                            "scope":"created:admin",
+                            "client_id":"1899",
+                            "client_secret":"aahjdkndhj"
                         }
                     </code>
                 </pre>
@@ -103,16 +102,16 @@
             </section>
             <h3>Octroi: refresh_token</h3>
             <section>
-                <p>Format du corps de la requête:  application/x-www-form-urlencoded </p>
+                <p>Format du corps de la requête:<strong>   application/x-www-form-urlencoded .</strong> </p>
                 <p>Corps de la requête </p>
                 <pre>
                     <code>
                         {
-                            grant_type : "refresh_token",
-                            refresh_token:"677d6c562dba15621497cc023dba5704aee306f43506871df9cbc4d7799055a6"
-                            scope:"created:admin",
-                            client_id:"1899",
-                            client_secret:"aahjdkndhj"
+                            "grant_type" : "refresh_token",
+                            "refresh_token":"677d6c562dba15621497cc023dba5704aee306f43506871df9cbc4d7799055a6"
+                            "scope":"created:admin",
+                            "client_id":"1899",
+                            "client_secret":"aahjdkndhj"
                         }
                     </code>
                 </pre>
@@ -132,20 +131,20 @@
             </section>
             <h3>Octroi: authorization_code</h3>
             <section>
-                <p>Format du corps de la requête:  application/x-www-form-urlencoded </p>
+                <p>Format du corps de la requête: <strong>application/x-www-form-urlencoded </strong></p>
                 <p>Corps de la requête </p>
                 <pre>
                     <code>
                         {
-                            grant_type : "authorization_code",
-                            code:"",/*
+                            "grant_type" : "authorization_code",
+                            "code":"",/*
                             le code de verification obtenu avec le end point http://localhost/code
                             */
-                            code_verifier:"",// c'est le code code_challenge avec le quels vous avec eu le code authorisation
-                            redirect_uri:"http://app.com/callback"
-                            scope:"created:admin",
-                            client_id:"1899",
-                            client_secret:"aahjdkndhj"
+                            "code_verifier":"",// c'est le code code_challenge avec le quels vous avec eu le code authorisation
+                            "redirect_uri":"http://app.com/callback"
+                            "scope":"created:admin",
+                            "client_id":"1899",
+                            "client_secret":"aahjdkndhj"
                         }
                     </code>
                 </pre>
@@ -165,15 +164,15 @@
             </section>
             <h3>Octroi: client_credentials</h3>
             <section>
-                <p>Format du corps de la requête:  application/x-www-form-urlencoded </p>
+                <p>Format du corps de la requête: <strong> application/x-www-form-urlencoded </strong> </p>
                 <p>Corps de la requête </p>
                 <pre>
                     <code>
                         {
-                            grant_type : "client_credentials",
-                            scope:"created:admin",
-                            client_id:"1899",
-                            client_secret:"aahjdkndhj"
+                            "grant_type" : "client_credentials",
+                            "scope":"created:admin",
+                            "client_id":"1899",
+                            "client_secret":"aahjdkndhj"
                         }
                     </code>
                 </pre>
@@ -193,23 +192,23 @@
             </section>
         </section>
 
-    </sections>
+    </section>
 
     <section>
-       <h2>point de terminaison: http://localhost:3000/sign/teacher </h2>
-       <p>type de methode: POST</p>
+       <h2>Point de terminaison:<strong> http://localhost:3000/sign/teacher </strong></h2>
+       <p>Type de methode:<strong>POST</strong></p>
        <p> 
-        il permet d'initialiser la création d'un enseignants en le sauvegardant temporairement
+        Il permet d'initialiser la création d'un enseignants en le sauvegardant temporairement
         pour qu'il valide le code qu'il a été envoyer par email
        </p>
        <p>Corps de la requête</p>
        <pre>
         <code>
             {
-                addressMail:"bla@gmail.com",
-                userName:"userName",
-                password:"password",
-                subjetName:"storyAfrica"
+                "addressMail":"bla@gmail.com",
+                "userName":"userName",
+                "password":"password",
+                "subjetName":"storyAfrica"
             }
         </code>
        </pre> 
@@ -233,19 +232,19 @@
     </section>
 
     <section>
-        <h2>point de terminaison: http://localhost:3000/sign/student </h2>
-        <p>type de methode: POST</p>
+        <h2>Point de terminaison: <strong> http://localhost:3000/sign/student </strong></h2>
+        <p>type de methode:<strong> POST </strong></p>
         <p> 
-         il permet d'initialiser la création d'un étudiant en le sauvegardant temporairement
+         Il permet d'initialiser la création d'un étudiant en le sauvegardant temporairement
          pour qu'il valide le code qu'il a été envoyer par email
         </p>
         <p>Corps de la requête</p>
         <pre>
          <code>
              {
-                 addressMail:"bla@gmail.com",
-                 userName:"userName",
-                 password:"password"
+                 "addressMail":"bla@gmail.com",
+                 "userName":"userName",
+                 "password":"password"
              }
          </code>
         </pre> 
@@ -268,10 +267,10 @@
     </section>
 
     <section>
-        <h2>point de terminaison: http://localhost:3000/sign/admin </h2>
-        <p>type de methode: POST</p>
+        <h2>Point de terminaison:<strong> http://localhost:3000/sign/admin </strong></h2>
+        <p>Type de methode: POST</p>
         <p> 
-         il est réserver au administrateur pour en créer d'autre . Faudra ajouter le jeton jwt à la demande
+         Il est réserver au administrateur pour en créer d'autre . Faudra ajouter le jeton jwt à la demande
          <code>
             header:{
                 authorization:""//Bearer token
@@ -282,9 +281,9 @@
         <pre>
          <code>
              {
-                 addressMail:"bla@gmail.com",
-                 userName:"userName",
-                 password:"password"
+                 "addressMail":"bla@gmail.com",
+                 "userName":"userName",
+                 "password":"password"
              }
          </code>
         </pre> 
@@ -297,10 +296,10 @@
     </section>
 
     <section>
-        <h2>point de terminaison: http://localhost:3000/verifCode/:id </h2>
-        <p>type de methode: POST</p>
+        <h2>Point de terminaison:<strong> http://localhost:3000/verifCode/:id </strong> </h2>
+        <p>type de methode:<strong> POST </strong></p>
         <p> 
-         il permet de valider le code de verification envoyer par mail pour sauvegarder 
+         Il permet de valider le code de verification envoyer par mail pour sauvegarder 
          de manière permanente l'utilisateur
          exemple de formulation du point de terminaison :http://localhost:3000/verifCode/1
         </p>
@@ -331,17 +330,17 @@
     </section>
 
     <section>
-        <h2>point de terminaison: http://localhost:3000/restartCode/:userName/:nametable </h2>
-        <p>type de methode: PUT</p>
+        <h2>Point de terminaison: <strong>http://localhost:3000/restartCode/:userName/:nametable </strong></h2>
+        <p>type de methode:<strong> PUT </strong></p>
         <p> 
-         il permet de rédemarrer un nouveau code de verif exemple :http://localhost:3000/restartCode/kamit/student,
+         Il permet de rédemarrer un nouveau code de verif exemple : http://localhost:3000/restartCode/kamit/student,
          http://localhost:3000/restartCode/kamit/teacher, http://localhost:3000/restartCode/kamit/user
         </p>
         <p>Format de la reponses</p>
         <pre>
          <code>
             {
-                "message": "Code de verification mis à jour ramses Veillez verifier votre boite mail ramses@gmail.com ",
+                "message": "Code de verification mis à jour kamit Veillez verifier votre boite mail ramses@gmail.com ",
                 "data": {
                     "id": 2,
                     "codeverif": 6453,
