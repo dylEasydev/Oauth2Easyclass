@@ -21,7 +21,7 @@ class UserService implements UserPermServiceInterface{
                                     sequelizeConnect.literal(`(
                                         SELECT urlPictures FROM image as picture
                                         WHERE 
-                                            picture.foreignId = user.id
+                                            picture.foreignId = User.id
                                             AND
                                             picture.nameTable ="user"
                                         LIMIT 1
@@ -31,7 +31,7 @@ class UserService implements UserPermServiceInterface{
                                     sequelizeConnect.literal(`(
                                         SELECT codeverif FROM codeVerif as code
                                         WHERE 
-                                            code.foreignId = user.id
+                                            code.foreignId = User.id
                                             AND
                                             code.nameTable = "user"
                                         LIMIT 1
@@ -80,7 +80,7 @@ class UserService implements UserPermServiceInterface{
                                     sequelizeConnect.literal(`(
                                         SELECT urlPictures FROM image as picture
                                         WHERE 
-                                            picture.foreignId = user.id
+                                            picture.foreignId = User.id
                                             AND
                                             picture.nameTable = "user"
                                         LIMIT 1
@@ -90,9 +90,9 @@ class UserService implements UserPermServiceInterface{
                                     sequelizeConnect.literal(`(
                                         SELECT codeverif FROM codeVerif as code
                                         WHERE 
-                                            code.foreignId = user.id
+                                            code.foreignId = User.id
                                             AND
-                                            code.nameTable = "user"
+                                            code.nameTable = "ser"
                                         LIMIT 1
                                     )`),`codeVerif`
                                 ]

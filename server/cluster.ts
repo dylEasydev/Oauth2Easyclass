@@ -1,8 +1,8 @@
-import os from 'os';
-import cluster from 'cluster';
+import {availableParallelism} from 'node:os';
+import cluster from 'node:cluster';
 
 export const launchCluster = ()=>{
-    let numberCluster = os.cpus().length;
+    let numberCluster = availableParallelism();
 
     console.log(`nous avons ${numberCluster} de coeur`);
 

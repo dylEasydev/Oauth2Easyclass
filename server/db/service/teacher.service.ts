@@ -17,7 +17,7 @@ class TeacherService extends UserTempService implements UserTempServiceInterface
                                     sequelizeConnect.literal(`(
                                         SELECT codeverif FROM codeVerif as code
                                         WHERE 
-                                            code.foreignId = teacherTemp.id
+                                            code.foreignId = TeacherTemp.id
                                             AND
                                             code.nameTable = "teacherTemp"
                                         LIMIT 1
@@ -53,7 +53,7 @@ class TeacherService extends UserTempService implements UserTempServiceInterface
                                     sequelizeConnect.literal(`(
                                         SELECT codeverif FROM codeVerif as code
                                         WHERE 
-                                            code.foreignId = teacherTemp.id
+                                            code.foreignId = TeacherTemp.id
                                             AND
                                             code.nameTable = "teacherTemp"
                                         LIMIT 1

@@ -11,7 +11,7 @@ Token.init({
         unique:true
     },
     accessToken:{
-        type:DataTypes.STRING,
+        type:DataTypes.TEXT('long'),
         allowNull:false
     },
     refreshToken:{

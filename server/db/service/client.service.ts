@@ -19,7 +19,7 @@ class ClientService implements ClientServiceInterface{
                                     sequelizeConnect.literal(`(
                                         SELECT urlPictures FROM image as picture
                                         WHERE 
-                                            picture.foreignId = client.id
+                                            picture.foreignId = Client.id
                                             AND
                                             picture.nameTable = "client"
                                         LIMIT 1
@@ -96,7 +96,7 @@ class ClientService implements ClientServiceInterface{
                                     sequelizeConnect.literal(`(
                                         SELECT urlPictures FROM image as picture
                                         WHERE 
-                                            picture.foreignId = client.id
+                                            picture.foreignId = Client.id
                                             AND
                                             picture.nameTable = "client"
                                         LIMIT 1
