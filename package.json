@@ -15,7 +15,6 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cls-hooked": "^4.2.2",
-    "cluster": "^0.7.7",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",

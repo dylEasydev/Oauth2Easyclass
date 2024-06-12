@@ -48,4 +48,4 @@ Etape4: demarrer le serveur de votre base de donnée .
 
 Etape5: lancer la commande npm run dev .  
 
-Etape6: la documentation des end point ce trouve à l'address http://loclhost:{proccess.env.port}/docs.  
+Etape6: la documentation des end point ce trouve à l'address http://loclhost:${proccess.env.port}/docs.  

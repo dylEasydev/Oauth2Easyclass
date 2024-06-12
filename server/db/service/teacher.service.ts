@@ -14,12 +14,21 @@ class TeacherService extends UserTempService implements UserTempServiceInterface
                         attributes:{
                             include:[
                                 [
-                                    sequelizeConnect.literal(`(
+                                    sequelizeConnect.literal(
+                                        sequelizeConnect.getDialect() !=='postgres'?
+                                        `(
                                         SELECT codeverif FROM codeVerif as code
                                         WHERE 
                                             code.foreignId = TeacherTemp.id
                                             AND
                                             code.nameTable = "teacherTemp"
+                                        LIMIT 1
+                                    )`:  `(
+                                        SELECT "codeverif" FROM "codeVerif"
+                                        WHERE 
+                                            "foreignId" = "TeacherTemp"."id"
+                                            AND
+                                            "nameTable" = 'teacherTemp'
                                         LIMIT 1
                                     )`),`codeVerif`
                                 ]
@@ -50,12 +59,21 @@ class TeacherService extends UserTempService implements UserTempServiceInterface
                         attributes:{
                             include:[
                                 [
-                                    sequelizeConnect.literal(`(
+                                    sequelizeConnect.literal(
+                                        sequelizeConnect.getDialect()!=='postgres'?
+                                        `(
                                         SELECT codeverif FROM codeVerif as code
                                         WHERE 
                                             code.foreignId = TeacherTemp.id
                                             AND
                                             code.nameTable = "teacherTemp"
+                                        LIMIT 1
+                                    )`:  `(
+                                        SELECT "codeverif" FROM "codeVerif"
+                                        WHERE 
+                                            "foreignId" = "TeacherTemp"."id"
+                                            AND
+                                            "nameTable" = 'teacherTemp'
                                         LIMIT 1
                                     )`),`codeVerif`
                                 ]

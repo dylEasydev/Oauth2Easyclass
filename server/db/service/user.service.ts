@@ -18,22 +18,40 @@ class UserService implements UserPermServiceInterface{
                         attributes:{
                             include:[
                                 [
-                                    sequelizeConnect.literal(`(
+                                    sequelizeConnect.literal(
+                                        sequelizeConnect.getDialect() !== 'postgres'?
+                                        `(
                                         SELECT urlPictures FROM image as picture
                                         WHERE 
                                             picture.foreignId = User.id
                                             AND
                                             picture.nameTable ="user"
                                         LIMIT 1
+                                    )`:  `(
+                                        SELECT "urlPictures" FROM "image"
+                                        WHERE 
+                                            "foreignId" = "User"."id"
+                                            AND
+                                            "nameTable" ='user'
+                                        LIMIT 1
                                     )`),`image`
                                 ],
                                 [
-                                    sequelizeConnect.literal(`(
+                                    sequelizeConnect.literal(
+                                        sequelizeConnect.getDialect() !== 'postgres'?
+                                        `(
                                         SELECT codeverif FROM codeVerif as code
                                         WHERE 
                                             code.foreignId = User.id
                                             AND
                                             code.nameTable = "user"
+                                        LIMIT 1
+                                    )`:  `(
+                                        SELECT "codeverif" FROM "codeVerif"
+                                        WHERE 
+                                            "foreignId" = "User"."id"
+                                            AND
+                                            "nameTable" = 'user'
                                         LIMIT 1
                                     )`),`codeVerif`
                                 ]
@@ -77,22 +95,40 @@ class UserService implements UserPermServiceInterface{
                         attributes:{
                             include:[
                                 [
-                                    sequelizeConnect.literal(`(
+                                    sequelizeConnect.literal(
+                                        sequelizeConnect.getDialect() !=='postgres'?
+                                        `(
                                         SELECT urlPictures FROM image as picture
                                         WHERE 
                                             picture.foreignId = User.id
                                             AND
                                             picture.nameTable = "user"
                                         LIMIT 1
-                                    )`),`image`
+                                    )`:  `(
+                                        SELECT "urlPictures" FROM "image"
+                                        WHERE 
+                                            "foreignId" = "User"."id"
+                                            AND
+                                            "nameTable" = 'user'
+                                        LIMIT 1
+                                    )`,),`image`
                                 ],
                                 [
-                                    sequelizeConnect.literal(`(
+                                    sequelizeConnect.literal(
+                                        sequelizeConnect.getDialect() !== 'postgres'?
+                                        `(
                                         SELECT codeverif FROM codeVerif as code
                                         WHERE 
                                             code.foreignId = User.id
                                             AND
-                                            code.nameTable = "ser"
+                                            code.nameTable = "user"
+                                        LIMIT 1
+                                    )`:  `(
+                                        SELECT "codeverif" FROM "codeVerif"
+                                        WHERE 
+                                            "foreignId" = "User"."id"
+                                            AND
+                                            "nameTable" = 'user'
                                         LIMIT 1
                                     )`),`codeVerif`
                                 ]

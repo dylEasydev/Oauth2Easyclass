@@ -7,6 +7,14 @@
         {
             "scopeName":"updated:profil",
             "scopeDescript":"permissions de mis à jour de son profil"
+        },
+        {
+            "scopeName":"subscribed:domain",
+            "scopeDescript":"permissions pour s'abonner à un domaine"
+    	},
+        {
+            "scopeName":"deSubscribed:domain",
+            "scopeDescript":"permissions pour se désabonner d'un domaine"
         }
     ]
 }

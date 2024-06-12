@@ -11,6 +11,34 @@
     {
         "scopeName":"updated:profil",
         "scopeDescript":"permissions de mis à jour de sont"
+    },
+    {
+        "scopeName":"deSubscribed:domain",
+        "scopeDescript":"permissions pour se désabonner d'un domaine"
+    },
+    {
+        "scopeName":"deleted:domain",
+        "scopeDescript":"permissions pour supprimer un domaine"
+    },
+    {
+        "scopeName":"subscribed:domain",
+        "scopeDescript":"permissions pour s'abonner à un domaine"
+    },
+    {
+        "scopeName":"updated:domain",
+        "scopeDescript":"permissions pour mettre à jour un domaine"
+    },
+    {
+        "scopeName":"created:domain",
+        "scopeDescript":"permissions pour créer un domaine"
+    },
+    {
+        "scopeName":"updated:imageDomain",
+        "scopeDescript":"permissions pour créer un domaine"
+    },
+    {
+        "scopeName":"deleted:imageDomain",
+        "scopeDescript":"permissions pour créer un domaine"
     }
    ]
 }

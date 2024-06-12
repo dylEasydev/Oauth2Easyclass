@@ -19,22 +19,40 @@ class AuthorizationCodeService implements AuthorizationCodeServiceInterface{
                                 attributes:{
                                     include:[
                                         [
-                                            sequelizeConnect.literal(`(
+                                            sequelizeConnect.literal(
+                                                sequelizeConnect.getDialect() !=='postgres'?
+                                                `(
                                                 SELECT urlPictures FROM image as picture
                                                 WHERE 
                                                     picture.foreignId = user.id
                                                     AND
                                                     picture.nameTable = "user"
                                                 LIMIT 1
+                                            )`:  `(
+                                                SELECT "urlPictures" FROM "image"
+                                                WHERE 
+                                                    "foreignId" = "user"."id"
+                                                    AND
+                                                    "nameTable" = 'user'
+                                                LIMIT 1
                                             )`),`image`
                                         ],
                                         [
-                                            sequelizeConnect.literal(`(
+                                            sequelizeConnect.literal(
+                                                sequelizeConnect.getDialect() !== 'postgres'?
+                                                `(
                                                 SELECT codeverif FROM codeVerif as code
                                                 WHERE 
                                                     code.foreignId = user.id
                                                     AND
                                                     code.nameTable = "user"
+                                                LIMIT 1
+                                            )`: `(
+                                                SELECT "codeverif" FROM "codeVerif"
+                                                WHERE 
+                                                    "foreignId" = "user"."id"
+                                                    AND
+                                                    "nameTable" = 'user'
                                                 LIMIT 1
                                             )`),`codeVerif`
                                         ]
@@ -59,12 +77,21 @@ class AuthorizationCodeService implements AuthorizationCodeServiceInterface{
                                 attributes:{
                                     include:[
                                         [
-                                            sequelizeConnect.literal(`(
+                                            sequelizeConnect.literal(
+                                                sequelizeConnect.getDialect() !=='postgres'?
+                                                `(
                                                 SELECT urlPictures FROM image as picture
                                                 WHERE 
                                                     picture.foreignId = client.id
                                                     AND
                                                     picture.nameTable = "client"
+                                                LIMIT 1
+                                            )`:  `(
+                                                SELECT "urlPictures" FROM "image"
+                                                WHERE 
+                                                    "foreignId" = "client"."id"
+                                                    AND
+                                                    "nameTable" = 'client'
                                                 LIMIT 1
                                             )`),`image`
                                         ]
