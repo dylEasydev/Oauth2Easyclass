@@ -256,7 +256,12 @@ class TokenService implements TokenInterfaceService{
                     const tokenFind = await Token.findOne({where:{refreshToken}});
                     if(tokenFind === null) reject(new NotFountError(`Ce Token n'existe pas`!));
                     else{
-                        await tokenFind.destroy({force:true});
+                        await Token.destroy({
+                            force:true,
+                            where:{
+                                id:tokenFind.id
+                            }
+                        });
                         resolve();
                     }
                 });
@@ -273,7 +278,12 @@ class TokenService implements TokenInterfaceService{
                     const tokenFind = await Token.findOne({where:{accessToken}});
                     if(tokenFind === null) reject(new NotFountError(`Ce Token n'existe pas`!));
                     else{
-                        await tokenFind.destroy({force:true});
+                        await Token.destroy({
+                            force:true,
+                            where:{
+                                id:tokenFind.id
+                            }
+                        });
                         resolve();
                     }
                 });

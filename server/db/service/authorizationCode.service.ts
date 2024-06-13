@@ -122,7 +122,12 @@ class AuthorizationCodeService implements AuthorizationCodeServiceInterface{
                     });
                     if(authCodeFind === null) reject(new NotFountError(`Ce code authorization n'existe pas!`));
                     else{
-                        await authCodeFind.destroy({force:true});
+                        await AuthorizationCode.destroy({
+                            force:true,
+                            where:{
+                                id:authCodeFind.id
+                            }
+                        });
                         resolve();
                     }
                 })
