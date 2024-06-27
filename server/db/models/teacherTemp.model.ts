@@ -11,10 +11,15 @@ import { UserBase } from './userBase.model';
 
 
 export class TeacherTemp extends UserBase implements UserTempInterface{
-    //attributs du models
+
     declare subjectName:string;
 
-    //Methodes mixins
+   /**
+    * 
+    * @param value 
+    * @param options 
+    * @returns {Promise<CodeVerifInterface>}
+    */
     createCodeVerif(
         value:Optional<
             InferCreationAttributes<
@@ -38,6 +43,10 @@ export class TeacherTemp extends UserBase implements UserTempInterface{
         })
     }
 
+    /**
+     * 
+     * @returns {Promise<UserTempInterface>}
+     */
     savePerm(){
         return new Promise<UserTempInterface>(async(resolve, reject) => {
             try {

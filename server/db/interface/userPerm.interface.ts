@@ -8,20 +8,20 @@ import {
 } from '../interface';
 import { NullishPropertiesOf } from 'sequelize/types/utils';
 
-/*
-    interface des utilisateurs ayant déjà fait  la verification par mail
-    ,elle hérite de l'interface de base des utilisateurs
-*/
+
 export interface UserPermInterface extends UserBaseInterface{
     
-    //objets de eagger logging de l'interface des utilisateurs Permanents
     clients?:NonAttribute<ClientInterface[]>|undefined;
     tokens?:NonAttribute<TokenInterface[]>|undefined;
     authCodes?:NonAttribute<AuthorizationCodeInterface[]>|undefined;
     image?:NonAttribute<string>|undefined;
     role?:NonAttribute<RoleInterface>|undefined; 
 
-    //Methodes de mixins 
+    /**
+     * 
+     * @param value 
+     * @param options 
+     */
     createImage(
         value?:Optional<
             InferCreationAttributes<ImageInterface>,

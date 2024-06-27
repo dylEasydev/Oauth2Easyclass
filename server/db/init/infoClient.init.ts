@@ -8,14 +8,14 @@ const applicaionValid = [
 
 InfoClient.init({
     id:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true,
         allowNull:false,
         unique:true
     },
     nameOrganization:{
-        type:DataTypes.STRING(30),
+        type:DataTypes.STRING,
         allowNull:false,
         validate:{
             is:{
@@ -35,7 +35,7 @@ InfoClient.init({
         }
     },
     typeApplication:{
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING,
         allowNull:false,
         validate:{
             isIn:{
@@ -45,7 +45,7 @@ InfoClient.init({
         }
     },
     addressOrganization:{
-        type:DataTypes.STRING(255),
+        type:DataTypes.STRING,
         allowNull:false,
         validate:{
             notNull:{msg:`Veillez founir une adresse électronique Valide !`},

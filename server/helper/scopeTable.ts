@@ -1,7 +1,9 @@
 import readScope from "./readScope";
 
 export class TableScope{
+    
     static [key:string]:string[];
+
     static admin = readScope.readScopeApp('scopeAdmin').map(data=>{
         return data.scopeName
     });

@@ -5,7 +5,7 @@ import { UserTempInterface } from '../db/interface';
 import { CodeStatut, statusResponse } from '../helper';
 import { ValidationError } from 'sequelize';
 
-const nameTableValid = ['studenttemp','teachertemp','user'];
+const nameTableValid = ['studentTemp','teacherTemp','user'];
 
 export class CodeVerifController extends BaseController{
 
@@ -14,10 +14,8 @@ export class CodeVerifController extends BaseController{
             if(req.params.id){
                 const id = parseInt(req.params.id);
                 let {codeverif} = req.body;
-                if(typeof codeverif !== 'number'){
-                    codeverif = typeof codeverif === 'string'? codeverif:0;
-                    codeverif = parseInt(codeverif);
-                }
+                if(typeof codeverif !== 'number') codeverif = typeof codeverif === 'string'? parseInt(codeverif):0;
+
                 const codeUser = await codeVerifService.findCodeVerif(codeverif,id);
                 if(codeUser.expiresAt.getMilliseconds() > Date.now()){
                     return statusResponse.sendResponseJson(
@@ -32,7 +30,7 @@ export class CodeVerifController extends BaseController{
                 return statusResponse.sendResponseJson(
                     CodeStatut.CREATE_STATUS,
                     res,
-                    `Bienvenu ${userPerm.userName} chez easyclass.edu`,
+                    `Bienvenue ${userPerm.userName} chez easyclass.edu`,
                     userPerm
                 );
             }
@@ -56,7 +54,7 @@ export class CodeVerifController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , Réesayez dans quelques instants !!`,
+                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
                 error
             );
         }
@@ -69,7 +67,7 @@ export class CodeVerifController extends BaseController{
                     return statusResponse.sendResponseJson(
                         CodeStatut.CLIENT_STATUS,
                         res,
-                        `le nom de table non valid doit être inclus dans : ${nameTableValid}`
+                        `Le nom de table non valid doit être inclus dans : ${nameTableValid}`
                     )
                 }
                 const user = await codeVerifService.getUserByNameTable(req.params.nametable,req.params.userName);
@@ -77,7 +75,7 @@ export class CodeVerifController extends BaseController{
                 return statusResponse.sendResponseJson(
                     CodeStatut.VALID_STATUS,
                     res,
-                    `Code de verification mis à jour ${user.userName} Veillez verifier votre boite mail ${user.addressMail} `,
+                    `Code de verification mis à jour ${user.userName} veillez verifier votre boite mail ${user.addressMail} `,
                     newCodeverif
                 )
             }
@@ -101,7 +99,7 @@ export class CodeVerifController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , Réesayez dans quelques instants !!`,
+                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
                 error
             );
         }

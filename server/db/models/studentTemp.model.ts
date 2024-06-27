@@ -12,7 +12,13 @@ import { UserBase } from './userBase.model';
 
 
 export class StudentTemp extends UserBase implements UserTempInterface{
-    //methodes de mixins
+    
+    /**
+     * 
+     * @param value 
+     * @param options 
+     * @returns {Promise<CodeVerifInterface>}
+     */
     createCodeVerif(
         value:Optional<
             InferCreationAttributes<CodeVerifInterface>,
@@ -35,7 +41,10 @@ export class StudentTemp extends UserBase implements UserTempInterface{
         })
     }
 
-    //Méthodes 
+    /**
+     * 
+     * @returns {Promise<UserPermInterface>}
+     */
     savePerm(){
         return new Promise<UserPermInterface>(async (resolve, reject) => {
             try {

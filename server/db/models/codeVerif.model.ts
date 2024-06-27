@@ -13,16 +13,14 @@ export class CodeVerif extends Model<
     InferAttributes<CodeVerif>,
     InferCreationAttributes<CodeVerif>
 >implements CodeVerifInterface{
-    //attributs du models
+
     declare id: CreationOptional<number>;
     declare codeverif: number;
     declare expiresAt:Date;
     declare nameTable: CreationOptional<string>; 
 
-    //declaration des clés étrangère
     declare foreignId:CreationOptional<number>;
     
-    //declaration des fonctions de Mixins
     [key: string]: (
         (options?: FindOptions<InferAttributes<UserBaseInterface>>) => Promise<UserBaseInterface>
     )|any;
@@ -81,7 +79,6 @@ export class CodeVerif extends Model<
             }
         })
     }
-    //declaration des object de eager Logging
     declare foreignData?: NonAttribute<UserBaseInterface> | undefined;
 
     declare readonly createdAt: CreationOptional<Date>;

@@ -9,15 +9,12 @@ import { AuthPermission, Scope } from '../../db';
 import { Op } from 'sequelize';
 import { TableScope } from '../../helper';
 
-/*
-    models des role de l'utilisateur comme 
-    Administrateur , Etudiants et Enseignant 
-*/
+
 export class Role extends Model<
     InferAttributes<Role>,
     InferCreationAttributes<Role>
 > implements RoleInterface{
-    //attributs du models
+
     declare id: CreationOptional<number>;
     declare roleName: string;
     declare roleDescript: CreationOptional<string>;
@@ -27,10 +24,8 @@ export class Role extends Model<
     declare readonly deletedAt: CreationOptional<Date>;
     declare readonly updatedAt: CreationOptional<Date>;
 
-    //cles secondaire 
     declare userId: ForeignKey<UserPermInterface['id']>;
 
-    //objet de eagger logging
     declare user?: NonAttribute<UserPermInterface>| undefined;
     declare scopes?: NonAttribute<ScopeInterface[]>| undefined;
 
@@ -40,10 +35,19 @@ export class Role extends Model<
         scopes: Association<RoleInterface , ScopeInterface>; 
     };
 
-    //methodes 
+    /**
+     * permet ajouter des permissions associer à ce role 
+     * @param t 
+     * @returns 
+     */
     addListScope(t?:Transaction|null){
         return new Promise<void>(async (resolve, reject) => {
             try {
+                /*
+                    *y'auras toujours un tableau de permissions quelques
+                    *soit le roleName c'est la raispn du as string pou eviter des 
+                    *conditions pas néccessaires
+                */
                 const scope = TableScope[this.roleName] as string[];
                 
                 const scopeData = await Scope.findAll({

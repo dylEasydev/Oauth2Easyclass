@@ -4,14 +4,14 @@ import { DataTypes } from 'sequelize';
 
 AuthPermission.init({
     id:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         allowNull:false,
         primaryKey:true,
         unique:true
     },
     roleId:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         allowNull:false,
         references:{
             model:Role,
@@ -19,7 +19,7 @@ AuthPermission.init({
         }
     },
     scopeId:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         allowNull:false,
         references:{
             model:Scope,

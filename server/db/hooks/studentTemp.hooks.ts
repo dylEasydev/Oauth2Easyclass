@@ -2,7 +2,6 @@ import {StudentTemp} from '../init';
 import { CodeVerif } from '../../db';
 import bcrypt from 'bcryptjs';
 import { generateCode } from '../../helper';
-import { codeVerifService } from '../service';
 
 StudentTemp.afterValidate(student =>{
     return new Promise<void>((resolve, reject) => {

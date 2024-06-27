@@ -2,27 +2,28 @@ import { Role } from '../models';
 import { DataTypes } from 'sequelize';
 import sequelizeConnect from '../config';
 
-const roleValid = ['teacher','student','admin']
+const roleValid = ['teacher','student','admin'];
+
 Role.init({
     id:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true,
         allowNull:false,
         unique:true
     },
     roleName:{
-        type: DataTypes.STRING(30),
+        type: DataTypes.STRING,
         allowNull:false,
         validate:{
             isIn:{
-                msg:`votre role doit faire partir de cette liste ${roleValid}`,
+                msg:`votre role doit faire partir de cette liste ${roleValid} !`,
                 args:[roleValid]
             }
         }
     },
     roleDescript:{
-        type:DataTypes.TEXT('tiny'),
+        type:DataTypes.TEXT,
         allowNull:true
     },
     createdAt: DataTypes.DATE ,

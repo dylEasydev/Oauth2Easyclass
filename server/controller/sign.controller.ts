@@ -14,7 +14,7 @@ export class SignController extends BaseController{
                 return statusResponse.sendResponseJson(
                     CodeStatut.CLIENT_STATUS,
                     res,
-                    `l'utilisateur ${userName} possède déjà un compte !`
+                    `L'utilisateur ${userName} possède déjà un compte !`
                 )
             }
             const teacherWaiting = await teacherWaitService.findTeacherByNameAndMail(userName,addressMail);
@@ -34,7 +34,7 @@ export class SignController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.CREATE_STATUS,
                 res,
-                `${userName}Veillez consulter votre boite mail (${addressMail}) pour valider votre inscription !`,
+                `${userName} veillez consulter votre boite mail (${addressMail}) pour valider votre inscription !`,
                 teacherTemp
             );
         } catch (error) {
@@ -49,7 +49,7 @@ export class SignController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , Réesayez dans quelques instants !!`,
+                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
                 error
             );
         }
@@ -63,7 +63,7 @@ export class SignController extends BaseController{
                 return statusResponse.sendResponseJson(
                     CodeStatut.CLIENT_STATUS,
                     res,
-                    `l'utilisateur ${userName} possède déjà un compte !`
+                    `L'utilisateur ${userName} possède déjà un compte !`
                 )
             }
             const teacherWaiting = await teacherWaitService.findTeacherByNameAndMail(userName,addressMail);
@@ -71,7 +71,7 @@ export class SignController extends BaseController{
                 return statusResponse.sendResponseJson(
                     CodeStatut.CLIENT_STATUS,
                     res,
-                    `l'utilisateur ${userName} possède déjà un compte !`
+                    `L'utilisateur ${userName} possède déjà un compte !`
                 )
             }
             const student = await studentService.createUser({
@@ -82,7 +82,7 @@ export class SignController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.CREATE_STATUS,
                 res,
-                `${userName} Veillez consulter votre boite mail ${addressMail} pour valider votre inscription`,
+                `${userName} veillez consulter votre boite mail ${addressMail} pour valider votre inscription`,
                 student
             );
         } catch (error) {
@@ -97,7 +97,7 @@ export class SignController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , Réesayez dans quelques instants !!`,
+                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
                 error
             );
         }
@@ -111,7 +111,7 @@ export class SignController extends BaseController{
                 return statusResponse.sendResponseJson(
                     CodeStatut.CLIENT_STATUS,
                     res,
-                    `l'utilisateur ${userName} possède déjà un compte !`
+                    `L'utilisateur ${userName} possède déjà un compte !`
                 )
             }
             const admin = await userService.createUser({
@@ -122,7 +122,7 @@ export class SignController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.CREATE_STATUS,
                 res,
-                `Bienvenue sur EasyClass votre Base de l'éducation Administrateur ${userName}`,
+                `Bienvenue sur EasyClass votre Base de l'éducation administrateur ${userName}`,
                 admin
             );
         } catch (error) {
@@ -137,7 +137,7 @@ export class SignController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , Réesayez dans quelques instants !!`,
+                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
                 error
             );
         }

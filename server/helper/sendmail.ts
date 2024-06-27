@@ -13,8 +13,8 @@ class Mailer {
             port:587,
             secure:false,
             auth:{
-                user: process.env.COMPANING_MAIl,
-                pass: process.env.PASSWORD_MAIL
+                user: this._mail,
+                pass: this._password
             },
             tls: {
                 ciphers: 'SSLv3'

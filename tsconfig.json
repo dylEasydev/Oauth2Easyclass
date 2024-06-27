@@ -7,7 +7,6 @@
     "strict": true,
     "moduleResolution": "node",
     "noUncheckedIndexedAccess": true,
-    "experimentalDecorators": true,
     "esModuleInterop":true,
     "skipLibCheck":true,
     "forceConsistentCasingInFileNames":true,

@@ -3,26 +3,27 @@ import {
     InferCreationAttributes,FindOptions
 } from 'sequelize';
 import { UserPermInterface , ClientInterface} from '../interface';
-/**
- * interface représentant les Images
- */
+
+
 export interface ImageInterface extends Model<
     InferAttributes<ImageInterface>,
     InferCreationAttributes<ImageInterface>
 >{
-    //attributs de base
+
     id:CreationOptional<number>;
     picturesName:CreationOptional<string>;
     urlPictures:CreationOptional<string>;
+    /**
+     * nom de la table associer à cette image exemple
+     * 'domain' , 'user' , 'client' ...
+     */
     nameTable:CreationOptional<string>;
 
-    //clés étrangère
     foreignId:CreationOptional<number>;
 
-    //objets de Eagger logging
     foreignData?: NonAttribute<UserPermInterface|ClientInterface> | undefined;
 
-    //fonction de lazy logging des association polymorphes d'Image
+
     [key: string]: (
         (options?: FindOptions<
             InferAttributes<
@@ -46,7 +47,6 @@ export interface ImageInterface extends Model<
         >
     ):Promise<UserPermInterface|ClientInterface|null>;
 
-    //timestamps
     readonly createdAt:CreationOptional<Date>;
     readonly updatedAt:CreationOptional<Date>;
     readonly deletedAt:CreationOptional<Date>;

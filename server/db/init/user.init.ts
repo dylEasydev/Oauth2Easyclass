@@ -2,19 +2,17 @@ import sequelizeConnect from '../config';
 import { User } from '../models';
 import { DataTypes } from 'sequelize';
 
-/**
- * initialisation du models pour la migraion vers la BD
- */
+
 User.init({
     id:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true,
         allowNull:false,
         unique:true
     },
     userName:{
-        type:DataTypes.STRING(30),
+        type:DataTypes.STRING,
         unique:{
             msg:`Ce nom d'utilisateur est déjà pris !`,
             name:`userNameKey`
@@ -26,11 +24,16 @@ User.init({
                 msg:`Veillez fournir un nom d'utilisateur sans carractères spéciaux !`
             },
             len:{
-                msg:` le nom d'utilisateur doit être entre 4 et30 carractères !`,
+                msg:` Le nom d'utilisateur doit être entre 4 et 30 carractères !`,
                 args:[4,30]
             },
             notNull:{msg:`Veillez founir une autre valeur que <<null>> pour le nom d'utilisateur !`},
             notEmpty:{msg:`Veillez passer une chaîne de carractères non vide pour le nom de l'utilisateur !`},
+            /**
+             * 
+             * @param value 
+             * @throws {ValidationError}
+             */
             isNameValid(value:string){
                 if(!value) throw new Error(`Votre nom d'utilisateur ne doit pas être null !`);
                 if(value.length < 4) throw new Error(`Fournissez au moins 4 carractères pour votre nom d'utilisateur !`);
@@ -39,7 +42,7 @@ User.init({
         }
     },
     password:{
-        type:DataTypes.STRING(255),
+        type:DataTypes.STRING,
         allowNull: false,
         validate:{
             notNull:{msg:`Veillez fournir un mots de passe !`},
@@ -64,8 +67,8 @@ User.init({
         },
         validate:{
             notNull:{msg:`Veillez founir une adresse électronique Valide !`},
-            notEmpty:{msg:`Veillez founir une adresse électronique Valide`},
-            isEmail:{msg:`Veillez founir une adresse électronique Valide`} ,
+            notEmpty:{msg:`Veillez founir une adresse électronique Valide !`},
+            isEmail:{msg:`Veillez founir une adresse électronique Valide !`} ,
         },
     },
     createdAt: DataTypes.DATE ,

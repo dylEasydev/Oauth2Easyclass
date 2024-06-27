@@ -6,15 +6,12 @@ import {
     AuthPermissionInterface, RoleInterface, ScopeInterface 
 } from '../interface';
 
-/**
- * models de jointure entre role et scope.
- */
 
 export class AuthPermission extends Model<
     InferAttributes<AuthPermission>,
     InferCreationAttributes<AuthPermission>
 > implements AuthPermissionInterface{
-    //attributs du models
+ 
     declare id: CreationOptional<number>;
     declare roleId: ForeignKey<RoleInterface['id']>;
     declare scopeId: ForeignKey<ScopeInterface['id']>;
@@ -24,7 +21,6 @@ export class AuthPermission extends Model<
     declare readonly updatedAt:CreationOptional<Date>;
     declare readonly deletedAt:CreationOptional<Date>;
 
-    //object de eagger logging
     declare scope?: NonAttribute<ScopeInterface> | undefined;
     declare role?: NonAttribute<RoleInterface> | undefined;
 

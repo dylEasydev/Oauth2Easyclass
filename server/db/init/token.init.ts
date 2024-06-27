@@ -4,14 +4,14 @@ import { DataTypes } from 'sequelize';
 
 Token.init({
     id:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true,
         allowNull:false,
         unique:true
     },
     accessToken:{
-        type:DataTypes.TEXT('long'),
+        type:DataTypes.TEXT,
         allowNull:false
     },
     refreshToken:{

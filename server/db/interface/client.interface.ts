@@ -8,31 +8,38 @@ import {
 } from '../interface';
 import { BelongsToGetAssociationMixin } from 'sequelize';
 
-/**
- * interface représentant un client (application voulant utiliser nos services)
- */
+
 export interface ClientInterface extends Model<
     InferAttributes<ClientInterface>,
     InferCreationAttributes<ClientInterface>
 >{
-    //attributs de l'interface
     id:CreationOptional<number>;
     clientId:string;
     clientSecret:string;
+    /**
+     * ensembles des url de redirectons de ce client
+     */
     redirectUris:string[];
+    /**
+     * tableaus des octrois autoriser à ce clients
+     * 3 valeur pour un autoriser pr un grant soit 'password' soit ,'refresh_token' soit ,'authorization_code' 
+     */
     grants:string[];
 
-    //clé étrangères
+
     userId:ForeignKey<UserPermInterface['id']>;
 
-    //objets de Eagger Logging
+
     user?:NonAttribute<UserPermInterface>|undefined;
     image?:NonAttribute<string>|undefined;
     authCodes?:NonAttribute<AuthorizationCodeInterface[]>|undefined;
     infoClient?:NonAttribute<InfoClientInterface> | undefined;
     tokens?:NonAttribute<TokenInterface[] >| undefined;
 
-    //fonction de Lazy Logging
+    /**
+     * @param {BelongsToGetAssociationMixinOptions} options
+     * @returns {Promise<UserPermInterface>}
+     */
     getUser:BelongsToGetAssociationMixin<UserPermInterface>;
 
     //timestamps

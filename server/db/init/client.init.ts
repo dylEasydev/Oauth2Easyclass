@@ -5,14 +5,14 @@ import validator from 'validator';
 
 Client.init({
     id:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true,
         allowNull:false,
         unique:true
     },
     clientId:{
-        type: DataTypes.STRING(8),
+        type: DataTypes.STRING,
         allowNull:false,
         unique:true,
         validate:{
@@ -27,7 +27,7 @@ Client.init({
         }
     },
     clientSecret:{
-        type:DataTypes.STRING(30),
+        type:DataTypes.STRING,
         allowNull:true,
         unique:true,
         validate:{

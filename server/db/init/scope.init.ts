@@ -9,24 +9,24 @@ const scopeValid = readScope.readScopeApp('scopeApp').map(data=>{
 
 Scope.init({
     id:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true,
         allowNull:false,
         unique:true
     },
     scopeName:{
-        type: DataTypes.STRING(30),
+        type: DataTypes.STRING,
         allowNull:false,
         validate:{
             isIn:{
-                msg:`votre role doit faire partir de cette liste ${scopeValid}`,
+                msg:`Votre role doit faire partir de cette liste ${scopeValid}`,
                 args:[scopeValid]
             }
         }
     },
     scopeDescript:{
-        type:DataTypes.TEXT('tiny'),
+        type:DataTypes.TEXT,
         allowNull:true
     },
     createdAt: DataTypes.DATE ,

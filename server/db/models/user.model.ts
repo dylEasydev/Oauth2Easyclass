@@ -11,30 +11,35 @@ import { NullishPropertiesOf } from 'sequelize/types/utils';
 import { UserBase } from './userBase.model';
 
 export class User extends UserBase implements UserPermInterface{
-     //objets de Eager Logging
-     declare clients?: NonAttribute<ClientInterface[]>| undefined;
-     declare tokens?: NonAttribute<TokenInterface[]> | undefined;
-     declare codeVerif?: NonAttribute<number> | undefined;
-     declare image?: NonAttribute<string> | undefined;
-     declare authCodes?: NonAttribute<AuthorizationCodeInterface[]> |undefined;
-     declare role?: NonAttribute<RoleInterface> | undefined;
+     
+    declare clients?: NonAttribute<ClientInterface[]>| undefined;
+    declare tokens?: NonAttribute<TokenInterface[]> | undefined;
+    declare codeVerif?: NonAttribute<number> | undefined;
+    declare image?: NonAttribute<string> | undefined;
+    declare authCodes?: NonAttribute<AuthorizationCodeInterface[]> |undefined;
+    declare role?: NonAttribute<RoleInterface> | undefined;
 
-     //declaration des alias associations
-     static associations: { 
+     
+    static associations: { 
         clients: Association<UserPermInterface, ClientInterface>; 
         tokens: Association<UserPermInterface, TokenInterface>;
         authCodes: Association<UserPermInterface , AuthorizationCodeInterface>;
         role: Association<UserPermInterface , RoleInterface>;
-     };
+    };
 
-     //fonction de Mixins
-     createImage(
+    /**
+     * 
+     * @param value 
+     * @param options 
+     * @returns {Promise<ImageInterface>}
+     */
+    createImage(
         value?:Optional<
             InferCreationAttributes<ImageInterface>,
             NullishPropertiesOf<ImageInterface>
         >, 
         options?:CreateOptions<InferAttributes<ImageInterface>>
-     ){
+    ){
         return new Promise<ImageInterface>(async (resolve, reject) => {
             try {
                 const image = await Image.create({
@@ -48,9 +53,14 @@ export class User extends UserBase implements UserPermInterface{
                 reject(error);
             }
         })
-     }
-     
-     createCodeVerif(
+    }
+    /**
+     * 
+     * @param value 
+     * @param options 
+     * @returns {Promise<CodeVerifInterface>}
+     */ 
+    createCodeVerif(
         value:Optional<
             InferCreationAttributes<CodeVerifInterface>,
             NullishPropertiesOf<CodeVerifInterface>
@@ -71,6 +81,6 @@ export class User extends UserBase implements UserPermInterface{
             }
         })
     }
-
-     declare createRole: HasOneCreateAssociationMixin<RoleInterface>;
+    
+    declare createRole: HasOneCreateAssociationMixin<RoleInterface>;
 }

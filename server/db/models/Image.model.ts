@@ -6,15 +6,12 @@ import { ClientInterface, ImageInterface, UserPermInterface } from '../interface
 import { upperCaseFirst } from '../../helper';
 import { Client, User } from '../../db';
 
-/**
- * models des image stocker dans le serveur de Gestion des images 
- */
+
 export class Image extends Model<
     InferAttributes<Image>,
     InferCreationAttributes<Image>
 >implements ImageInterface{
     
-    //attributs attributs
     declare id:CreationOptional<number>;
     declare picturesName:CreationOptional<string>;
     declare urlPictures:CreationOptional<string>;

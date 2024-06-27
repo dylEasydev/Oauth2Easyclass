@@ -4,17 +4,17 @@ import sequelizeConnect from '../config';
 
 CodeVerif.init({
     id:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true,
         allowNull:false,
         unique:true
     },
     codeverif:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         allowNull:false,
         validate:{
-            isInt:{msg:`Votre code de verifications doit être un entier !`}
+            isInt:{msg:`Votre code de verification doit être un entier !`}
         }
     },
     expiresAt:{
@@ -26,7 +26,7 @@ CodeVerif.init({
         allowNull:false
     },
     foreignId:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         allowNull:false
     },
     createdAt: DataTypes.DATE ,

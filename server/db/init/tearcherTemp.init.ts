@@ -4,14 +4,14 @@ import { DataTypes } from 'sequelize';
 
 TeacherTemp.init({
     id:{
-        type:DataTypes.INTEGER.UNSIGNED,
+        type:DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true,
         allowNull:false,
         unique:true
     },
     userName:{
-        type:DataTypes.STRING(30),
+        type:DataTypes.STRING,
         allowNull:false,
         unique:{
             name:'uniqueNameKey',
@@ -49,7 +49,7 @@ TeacherTemp.init({
         },
     },
     password:{
-        type:DataTypes.STRING(255),
+        type:DataTypes.STRING,
         allowNull: false,
         validate:{
             notNull:{msg:`Veillez fournir un mots de passe !`},
@@ -66,7 +66,7 @@ TeacherTemp.init({
         }
     },
     subjectName:{
-        type:DataTypes.STRING(30),
+        type:DataTypes.STRING,
         allowNull:false,
         validate:{
             is:{

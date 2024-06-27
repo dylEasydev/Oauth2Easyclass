@@ -78,10 +78,10 @@ class CodeVerifService implements CodeVerifInterfaceService{
             try {
                 let user:UserBaseInterface|null;
                 switch(nameTable){
-                    case 'studenttemp':
+                    case 'studentTemp':
                         user = await studentService.findUserByName(userName) as UserBaseInterface;
                         break;
-                    case 'teachertemp':
+                    case 'teacherTemp':
                         user = await teacherService.findUserByName(userName) as UserBaseInterface;
                         break;
                     case 'user':
