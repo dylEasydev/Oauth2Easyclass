@@ -75,7 +75,7 @@ class TokenService implements TokenInterfaceService{
                                             )`:  `(
                                                 SELECT "codeverif" FROM "codeVerif"
                                                 WHERE 
-                                                    code."foreignId" = "user"."id"
+                                                    "foreignId" = "user"."id"
                                                     AND
                                                     "nameTable" = 'user'
                                                 LIMIT 1

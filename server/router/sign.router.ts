@@ -7,7 +7,7 @@ export class SignRouter extends BaseRouter<SignController>{
         this.routerServeur.post('/sign/student',this.controllerService.signStudent);
         this.routerServeur.post(
             '/sign/admin',
-            new OauthController().serverOauth.authenticate,
+            new OauthController().serverOauth.authenticate(),
             this.controllerService.signAdmin
         );    
     }

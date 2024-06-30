@@ -1,7 +1,7 @@
 import { mailer } from '../../helper';
 import { CodeVerif } from '../init';
 import { NotFountError } from '../service';
-
+/*
 CodeVerif.afterSave((instance,options)=>{
     return new Promise<void>(async (resolve, reject) => {
         try {
@@ -17,7 +17,7 @@ CodeVerif.afterSave((instance,options)=>{
             reject(error);
         }
     })
-})
+})*/
 
 
 export {CodeVerif};
