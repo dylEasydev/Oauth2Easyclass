@@ -87,10 +87,10 @@ class UserService implements UserPermServiceInterface{
                 const  userFind = await sequelizeConnect.transaction(async t =>{
                     return User.findOne({
                         where:{
-                            [Op.or]:{
-                                userName:name,
-                                addressMail:email
-                            }
+                            [Op.or]:[
+                                {userName:name},
+                                {addressMail:email}
+                            ]
                         },
                         attributes:{
                             include:[
@@ -189,7 +189,7 @@ class UserService implements UserPermServiceInterface{
                     })
                     const expiresAt = new Date(Date.now());
                     expiresAt.setHours(expiresAt.getHours()+1);
-                    const codeverif = generateCode.generateId(4);
+                    const codeverif = generateCode.generateId(6);
                     console.log(codeverif);
                     await newUser.createCodeVerif({
                         codeverif,

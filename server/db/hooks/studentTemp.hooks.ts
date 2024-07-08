@@ -19,7 +19,7 @@ StudentTemp.afterCreate((student , options)=>{
         const expiresAt = new Date(Date.now());
         expiresAt.setHours(expiresAt.getHours()+1);
         student.createCodeVerif({
-            codeverif:parseInt(generateCode.generateId(4)),
+            codeverif:parseInt(generateCode.generateId(6)),
             expiresAt
         },{transaction:options.transaction,hooks:false})
         .then(code=>resolve()).catch(error=> reject(error));

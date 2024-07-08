@@ -71,12 +71,11 @@ export class CodeVerifController extends BaseController{
                     )
                 }
                 const user = await codeVerifService.getUserByNameTable(req.params.nametable,req.params.userName);
-                const newCodeverif = await codeVerifService.updateCodeVerif(user);
+                await codeVerifService.updateCodeVerif(user);
                 return statusResponse.sendResponseJson(
                     CodeStatut.VALID_STATUS,
                     res,
-                    `Code de verification mis à jour ${user.userName} veillez verifier votre boite mail ${user.addressMail} `,
-                    newCodeverif
+                    `Code de verification mis à jour ${user.userName} veillez verifier votre boite mail ${user.addressMail} `
                 )
             }
         } catch (error) {

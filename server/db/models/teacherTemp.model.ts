@@ -2,7 +2,7 @@ import {
     InferAttributes ,InferCreationAttributes,CreateOptions,Optional
 } from 'sequelize';
 import { 
-    CodeVerifInterface, UserTempInterface 
+    CodeVerifInterface, UserBaseInterface, UserTempInterface 
 } from '../interface';
 import sequelizeConnect from '../config';
 import { CodeVerif, TeacherWaiting } from '../../db';
@@ -48,7 +48,7 @@ export class TeacherTemp extends UserBase implements UserTempInterface{
      * @returns {Promise<UserTempInterface>}
      */
     savePerm(){
-        return new Promise<UserTempInterface>(async(resolve, reject) => {
+        return new Promise<UserBaseInterface>(async(resolve, reject) => {
             try {
                 const teacher = await sequelizeConnect.transaction(async t=>{
                     return await TeacherWaiting.create({

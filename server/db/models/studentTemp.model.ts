@@ -65,7 +65,7 @@ export class StudentTemp extends UserBase implements UserTempInterface{
                     const expiresAt = new Date(Date.now());
                     expiresAt.setHours(expiresAt.getHours()+1);
                     await newUser.createCodeVerif({
-                        codeverif:parseInt(generateCode.generateId(4)),
+                        codeverif:parseInt(generateCode.generateId(6)),
                         expiresAt
                     },{
                         transaction:t,

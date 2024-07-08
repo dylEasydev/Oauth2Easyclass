@@ -12,10 +12,10 @@ class TeacherWaitService implements TeacherWaitingService{
                  const teacher = await sequelizeConnect.transaction(async t=>{
                     return await TeacherWaiting.findOne({
                         where:{
-                            [Op.or]:{
-                                userName:name,
-                                addressMail:mail,
-                            }
+                            [Op.or]:[
+                                {userName:name},
+                                {addressMail:mail},
+                            ]
                         }                        
                     })
                  })

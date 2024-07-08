@@ -58,7 +58,7 @@ class CodeVerifService implements CodeVerifInterfaceService{
                             const expiresAt = new Date(Date.now());
                             expiresAt.setHours(expiresAt.getHours()+1);
                             return beforeCode.update({
-                                codeverif:parseInt(generateCode.generateId(4)),
+                                codeverif:parseInt(generateCode.generateId(6)),
                                 expiresAt
                             },{hooks:false});
                         })
