@@ -34,11 +34,36 @@
     },
     {
         "scopeName":"updated:imageDomain",
-        "scopeDescript":"permissions pour créer un domaine"
+        "scopeDescript":"permissions pour mettre à jour l'image d'un domaine"
     },
     {
         "scopeName":"deleted:imageDomain",
-        "scopeDescript":"permissions pour créer un domaine"
+        "scopeDescript":"permissions pour supprimer l'image d'un domaine "
+    },
+             
+    {
+        "scopeName":"updated:user",
+        "scopeDescript":"permissions de mis à jour de son compte"
+    },
+    {
+        "scopeName":"deleted:user",
+        "scopeDescript":"permissions de suppression d'un utilisateur"
+    },
+    {
+        "scopeName":"suspend:user",
+        "scopeDescript":"permissions de supspension d'un utilisateur"
+    },
+    {
+        "scopeName":"subscribed:matter",
+        "scopeDescript":"permissions pour s'abonner à une matière"
+    },
+    {
+        "scopeName":"deSubscribed:matter",
+        "scopeDescript":"permissions pour se desabonner à une matière"
+    },
+    {
+        "scopeName":"suspend:matter",
+        "scopeDescript":"permissions pour suspendre une matière"
     }
    ]
 }

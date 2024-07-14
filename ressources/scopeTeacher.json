@@ -15,6 +15,36 @@
         {
             "scopeName":"deSubscribed:domain",
             "scopeDescript":"permissions pour se désabonner d'un domaine"
+        },
+        
+        {
+            "scopeName":"deleted:imageMatter",
+            "scopeDescript":"permissions pour supprimer l'image d'une matière"
+        },
+        
+        {
+            "scopeName":"updated:imageMatter",
+            "scopeDescript":"permissions pour mettre à jour l'image d'une matière"
+        },
+        {
+            "scopeName":"created:matter",
+            "scopeDescript":"permissions pour créer une matière"
+        },
+        {
+            "scopeName":"updated:matter",
+            "scopeDescript":"permissions pour mettre à jour une matière"
+        },
+        {
+            "scopeName":"deleted:matter",
+            "scopeDescript":"permissions pour supprimer une matière"
+        },
+        {
+            "scopeName":"subscribed:matter",
+            "scopeDescript":"permissions pour s'abonner à une matière"
+        },
+        {
+            "scopeName":"deSubscribed:matter",
+            "scopeDescript":"permissions pour se desabonner à une matière"
         }
     ]
 }
