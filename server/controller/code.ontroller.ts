@@ -4,6 +4,7 @@ import { NotFountError, codeVerifService, userTempService } from '../db/service'
 import { UserTempInterface } from '../db/interface';
 import { CodeStatut, statusResponse } from '../helper';
 import { ValidationError } from 'sequelize';
+import { User } from '../db';
 
 const nameTableValid = ['studentTemp','teacherTemp','user'];
 
@@ -24,8 +25,15 @@ export class CodeVerifController extends BaseController{
                         `Le code de verification à expirer !!`
                     )
                 }
-                const user = await codeVerifService.getForeingData(codeUser) as UserTempInterface;
-                const userPerm = await userTempService.saveUser(user);
+                const user = await codeVerifService.getForeingData(codeUser);
+                if(user instanceof User ){
+                    return statusResponse.sendResponseJson(
+                        CodeStatut.NOT_PERMISSION_STATUS,
+                        res,
+                        `Ce end point est réservé au utilisateur temporaire`
+                    )
+                }
+                const userPerm = await userTempService.saveUser(user as UserTempInterface);
 
                 return statusResponse.sendResponseJson(
                     CodeStatut.CREATE_STATUS,
@@ -67,7 +75,7 @@ export class CodeVerifController extends BaseController{
                     return statusResponse.sendResponseJson(
                         CodeStatut.CLIENT_STATUS,
                         res,
-                        `Le nom de table non valid doit être inclus dans : ${nameTableValid}`
+                        `Le nom de table non valide, il doit être inclus dans : ${nameTableValid}`
                     )
                 }
                 const user = await codeVerifService.getUserByNameTable(req.params.nametable,req.params.userName);

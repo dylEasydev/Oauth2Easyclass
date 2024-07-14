@@ -45,7 +45,7 @@ export class Role extends Model<
             try {
                 /*
                     *y'auras toujours un tableau de permissions quelques
-                    *soit le roleName c'est la raispn du as string pou eviter des 
+                    *soit le roleName c'est la raison du as string pour eviter des 
                     *conditions pas néccessaires
                 */
                 const scope = TableScope[this.roleName] as string[];

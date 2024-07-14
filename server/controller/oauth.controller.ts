@@ -25,10 +25,9 @@ class OauthController extends BaseController{
                     throw new InvalidArgumentError('Invalid argument:`username` and `userPass`');
                 }
                 const user = await modelOauth.getUser(username,password);
-                if(user === null) reject(new NotFountError(`Invalid argument:'user'`))
+                if(user === null) reject(new NotFountError(`Invalid argument:'user'`));
                 else resolve(user);
             } catch (error) {
-                console.error(error);
                 reject(error);
             }
         })

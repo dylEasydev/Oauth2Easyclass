@@ -13,4 +13,4 @@ export class UserTempService{
     }
 }
 
-export default new UserTempService() 
+export default new UserTempService() ;

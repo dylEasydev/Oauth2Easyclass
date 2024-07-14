@@ -185,7 +185,7 @@ class UserService implements UserPermServiceInterface{
                     await newUser.createImage(undefined,{transaction:t});
                     await newUser.createRole({
                         roleName:'admin',
-                        roleDescript:`ce role est celui d'un administrateur`
+                        roleDescript:`Ce rôle est celui d'un administrateur`
                     })
                     const expiresAt = new Date(Date.now());
                     expiresAt.setHours(expiresAt.getHours()+1);

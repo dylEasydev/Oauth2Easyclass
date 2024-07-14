@@ -60,7 +60,7 @@ export class StudentTemp extends UserBase implements UserTempInterface{
                     });
                     await newUser.createRole({
                         roleName:'student',
-                        roleDescript:`ce role est celui d'un étudiant`
+                        roleDescript:`Ce rôle est celui d'un étudiant`
                     })
                     const expiresAt = new Date(Date.now());
                     expiresAt.setHours(expiresAt.getHours()+1);

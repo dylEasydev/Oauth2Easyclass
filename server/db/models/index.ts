@@ -14,8 +14,7 @@ import { Image } from './Image.model';
 import { AuthPermission } from './authPermisssion.model';
 
 export {
-    User , Client,Token,Role,Scope,UserBase,
-    CodeVerif,TeacherTemp,StudentTemp,
-    TeacherWaiting,AuthorizationCode,
-    InfoClient,Image,AuthPermission
+    User , Client,Token,Role,Scope,UserBase,CodeVerif,TeacherTemp,
+    StudentTemp,TeacherWaiting,AuthorizationCode,InfoClient,Image,
+    AuthPermission
 }

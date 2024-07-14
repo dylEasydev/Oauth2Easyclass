@@ -6,7 +6,7 @@ import { generateCode } from '../../helper';
 StudentTemp.afterValidate(student =>{
     return new Promise<void>((resolve, reject) => {
         bcrypt.hash(student.password , 10 ).then(passHash=>{
-            student.password = passHash
+            student.password = passHash;
             resolve();
         }).catch(error=>{
             reject(error);

@@ -16,5 +16,6 @@ import { AccessToken } from './accessToken.interface';
 export {
     UserBaseInterface,UserPermInterface,UserTempInterface,AuthPermissionInterface,
     ClientInterface,InfoClientInterface,AuthorizationCodeInterface,AccessToken,
-    TokenInterface,RoleInterface,ScopeInterface,ImageInterface,CodeVerifInterface,RefreshToken
+    TokenInterface,RoleInterface,ScopeInterface,ImageInterface,CodeVerifInterface,
+    RefreshToken
 }

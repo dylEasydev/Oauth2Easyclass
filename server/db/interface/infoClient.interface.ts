@@ -12,7 +12,7 @@ export interface InfoClientInterface extends Model<
     id:CreationOptional<number>;
     nameOrganization:string;
     /**
-     * 3 valeurs possible desktop application , web applicationou mobile apllication
+     * 3 valeurs possible desktop application , web application ou mobile apllication
      */
     typeApplication:string;
     addressOrganization:string;
