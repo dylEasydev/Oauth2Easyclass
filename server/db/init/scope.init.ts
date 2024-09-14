@@ -3,9 +3,10 @@ import { DataTypes } from 'sequelize';
 import sequelizeConnect from '../config';
 import { readScope } from '../../helper';
 
-const scopeValid = readScope.readScopeApp('scopeApp').map(data=>{
-    return data.scopeName
-})
+
+const scopeValid = readScope.readScopeApp('scopeApp').then(scope=>{
+    return scope.map(data=>{return data.scopeName;})
+});
 
 Scope.init({
     id:{
@@ -19,9 +20,13 @@ Scope.init({
         type: DataTypes.STRING,
         allowNull:false,
         validate:{
-            isIn:{
-                msg:`Votre role doit faire partir de cette liste ${scopeValid}`,
-                args:[scopeValid]
+            async validateScope(value:string){
+                try{
+                    if( !(await scopeValid).includes(value))
+                        throw(new Error(`Votre role doit faire partir de cette liste ${await scopeValid}`))
+                }catch(error){
+                    throw (error);
+                }
             }
         }
     },

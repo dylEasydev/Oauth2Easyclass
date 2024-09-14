@@ -4,7 +4,10 @@ import {
 } from 'sequelize';
 import { ClientInterface, InfoClientInterface } from '../interface';
 
-
+/**
+ * Models des informations associer à un client 
+ * loggo , type , ...
+ */
 export class InfoClient extends Model<
     InferAttributes<InfoClient>,
     InferCreationAttributes<InfoClient>
@@ -19,10 +22,13 @@ export class InfoClient extends Model<
     declare readonly deletedAt: CreationOptional<Date>;
     declare readonly updatedAt: CreationOptional<Date>;
 
+    //foreignKey
     declare clienId: ForeignKey<ClientInterface['id']>;
   
+    //objets de eagger logging (chargement impatient ). ref (doc sequelize)
     declare client?: NonAttribute<ClientInterface>| undefined;
 
+    //alias d'associations 
     declare static associations:{
         client: Association<InfoClientInterface , ClientInterface>;
     }

@@ -4,6 +4,9 @@ import {
 } from 'sequelize';
 import { RoleInterface, ScopeInterface } from '../interface';
 
+/**
+ * Models des permissions d'un utilisateur
+ */
 export class Scope extends Model<
     InferAttributes<Scope>,
     InferCreationAttributes<Scope>
@@ -17,9 +20,10 @@ export class Scope extends Model<
     declare readonly deletedAt: CreationOptional<Date>;
     declare readonly updatedAt: CreationOptional<Date>;
 
+    //objets de eagger logging
     declare roles?: NonAttribute<RoleInterface[]>| undefined;
 
-    //alias associations
+    //alias d'associations
     declare static associtions:{
         roles: Association<ScopeInterface , RoleInterface>;
     }

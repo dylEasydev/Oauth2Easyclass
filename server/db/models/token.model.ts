@@ -4,6 +4,9 @@ import {
 } from 'sequelize';
 import { ClientInterface, TokenInterface, UserPermInterface } from '../interface';
 
+/**
+ *  Models de jeton d'accès au ressources d'easy class .
+ */
 export class Token extends Model<
     InferAttributes<Token>,
     InferCreationAttributes<Token>
@@ -19,18 +22,20 @@ export class Token extends Model<
      */
     declare scope: string[];
 
-
+    //timesTamps
     declare readonly createdAt: CreationOptional<Date>;
     declare readonly deletedAt: CreationOptional<Date>;
     declare readonly updatedAt: CreationOptional<Date>;
 
+    //foreignKey
     declare userId: ForeignKey<UserPermInterface['id']>;
     declare clientId: ForeignKey<ClientInterface['id']>;
     
+    //objets de eagger logging
     declare user?: NonAttribute<UserPermInterface>|undefined; 
     declare client?: NonAttribute<ClientInterface> | undefined;
 
-    //alias associations
+    //alias d'associations
     declare static associations: { 
         user: Association<TokenInterface, UserPermInterface>;
         client: Association<TokenInterface , ClientInterface>; 

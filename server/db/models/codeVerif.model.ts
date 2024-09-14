@@ -9,6 +9,7 @@ import {
 import { upperCaseFirst } from '../../helper';
 import { TeacherTemp,StudentTemp, User } from '../../db';
 
+
 export class CodeVerif extends Model<
     InferAttributes<CodeVerif>,
     InferCreationAttributes<CodeVerif>
@@ -79,6 +80,8 @@ export class CodeVerif extends Model<
             }
         })
     }
+    
+    //objets de eagger logging
     declare foreignData?: NonAttribute<UserBaseInterface> | undefined;
 
     declare readonly createdAt: CreationOptional<Date>;

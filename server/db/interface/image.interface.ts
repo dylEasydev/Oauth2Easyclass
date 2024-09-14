@@ -4,7 +4,9 @@ import {
 } from 'sequelize';
 import { UserPermInterface , ClientInterface} from '../interface';
 
-
+/**
+ * Interface des images associer à un objet (client , user ...) 
+ */
 export interface ImageInterface extends Model<
     InferAttributes<ImageInterface>,
     InferCreationAttributes<ImageInterface>
@@ -19,11 +21,13 @@ export interface ImageInterface extends Model<
      */
     nameTable:CreationOptional<string>;
 
+    //foreignKey
     foreignId:CreationOptional<number>;
 
+    //objets de eagger logging
     foreignData?: NonAttribute<UserPermInterface|ClientInterface> | undefined;
 
-
+    //definition de clé pour la reconnaissance des fonctions par typescript 
     [key: string]: (
         (options?: FindOptions<
             InferAttributes<
@@ -39,6 +43,7 @@ export interface ImageInterface extends Model<
         options?:FindOptions<InferAttributes<UserPermInterface>>
     ):Promise<UserPermInterface|null>;
 
+    //récupération de l'objet associer à cette image (user ou client)
     getForeignObject(
         options?:FindOptions<
             InferAttributes<

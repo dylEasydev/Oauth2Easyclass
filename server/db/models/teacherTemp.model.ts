@@ -9,17 +9,17 @@ import { CodeVerif, TeacherWaiting } from '../../db';
 import { NullishPropertiesOf } from 'sequelize/types/utils';
 import { UserBase } from './userBase.model';
 
-
+/**
+ * Models d'enseignants en cours d'enregistrements
+ */
 export class TeacherTemp extends UserBase implements UserTempInterface{
 
     declare subjectName:string;
 
-   /**
-    * 
-    * @param value 
-    * @param options 
-    * @returns {Promise<CodeVerifInterface>}
-    */
+    /**
+      J'ai pas utiliser les association et Methodes de Mixin à
+      cause du prblèmes de contraintes des  associations polymorphes
+     */
     createCodeVerif(
         value:Optional<
             InferCreationAttributes<
@@ -32,6 +32,7 @@ export class TeacherTemp extends UserBase implements UserTempInterface{
             try {
                 const codeverif = await CodeVerif.create({
                     foreignId:this.id,
+                    //ici on passe le nom de la table associer à ce code de vérification
                     nameTable:TeacherTemp.tableName,
                     codeverif:value.codeverif,
                     expiresAt:value.expiresAt
@@ -44,12 +45,16 @@ export class TeacherTemp extends UserBase implements UserTempInterface{
     }
 
     /**
-     * 
-     * @returns {Promise<UserTempInterface>}
+     * Elle permet de sauvegarder un enseignant temporaire parmis 
+     * ceux en attente de validation par les administrateur .
      */
     savePerm(){
         return new Promise<UserBaseInterface>(async(resolve, reject) => {
             try {
+                /*
+                *initialisations de la transaction pour eviter
+                *l'irreversibilitée des operations   durant la requêtes
+                */ 
                 const teacher = await sequelizeConnect.transaction(async t=>{
                     return await TeacherWaiting.create({
                         userName:this.userName,

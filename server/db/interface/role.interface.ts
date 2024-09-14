@@ -4,7 +4,9 @@ import {
 } from 'sequelize';
 import { ScopeInterface, UserPermInterface } from '../interface';
 
-
+/**
+ * Interface des rôles associer à un utilisateurs
+ */
 export interface RoleInterface extends Model<
     InferAttributes<RoleInterface>,
     InferCreationAttributes<RoleInterface>
@@ -17,8 +19,10 @@ export interface RoleInterface extends Model<
     roleName:string;
     roleDescript:CreationOptional<string>;
 
+    //foreignKey
     userId:ForeignKey<UserPermInterface['id']>;
 
+    //objets de eagger logging
     user?:NonAttribute<UserPermInterface>|undefined;
     scopes?:NonAttribute<ScopeInterface[]>|undefined;
 
@@ -27,9 +31,7 @@ export interface RoleInterface extends Model<
     readonly deletedAt:CreationOptional<Date>;
 
     /**
-     * permet d'associer les permisons correspondants à ce role
-     * @param t 
-     * 
+     * Permet d'associer les permisons correspondants à ce rôle
      */
     addListScope(t?:Transaction|null):Promise<void>;
 }

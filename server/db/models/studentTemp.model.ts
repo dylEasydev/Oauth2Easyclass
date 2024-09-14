@@ -10,15 +10,11 @@ import { generateCode } from '../../helper';
 import { NullishPropertiesOf } from 'sequelize/types/utils';
 import { UserBase } from './userBase.model';
 
-
+/**
+ * models des étudiants en cours d'enregistrements
+ */
 export class StudentTemp extends UserBase implements UserTempInterface{
     
-    /**
-     * 
-     * @param value 
-     * @param options 
-     * @returns {Promise<CodeVerifInterface>}
-     */
     createCodeVerif(
         value:Optional<
             InferCreationAttributes<CodeVerifInterface>,
@@ -41,13 +37,10 @@ export class StudentTemp extends UserBase implements UserTempInterface{
         })
     }
 
-    /**
-     * 
-     * @returns {Promise<UserPermInterface>}
-     */
     savePerm(){
         return new Promise<UserPermInterface>(async (resolve, reject) => {
             try {
+                //initialisation de la transaction
                 const student = await sequelizeConnect.transaction(async t=>{
                     const newUser = await User.create({
                         userName:this.userName,
@@ -55,15 +48,19 @@ export class StudentTemp extends UserBase implements UserTempInterface{
                         password:this.password
                     },{hooks:false});
 
+                    //creation de l'image associer 
                     await newUser.createImage(undefined,{
                         transaction:t
                     });
+                    //creation du rôle 
                     await newUser.createRole({
                         roleName:'student',
                         roleDescript:`Ce rôle est celui d'un étudiant`
                     })
                     const expiresAt = new Date(Date.now());
                     expiresAt.setHours(expiresAt.getHours()+1);
+
+                    //creation du code de verification 
                     await newUser.createCodeVerif({
                         codeverif:parseInt(generateCode.generateId(6)),
                         expiresAt

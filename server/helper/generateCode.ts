@@ -2,6 +2,7 @@ class GenerateCode {
     private _numeriqueCode = "1234567890";
     private _alphaNumerique = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"+this._numeriqueCode;
 
+    //Methodes de generation aléatoire de code numerique
     generateId(length:number){
         let code='';
         for(let i = 0 ; i < length ;i++){
@@ -11,6 +12,7 @@ class GenerateCode {
         return code;
     }
 
+    //Methodes de generation de code alpha-numerique 
     generateKey(length:number){
         let code='';
         for(let i = 0 ; i < length ;i++){
@@ -20,5 +22,8 @@ class GenerateCode {
         return code;
     }
 }
-
+/**
+ * @type {GenerateCode} 
+ * objet avec des methodes de generation de code numerique ou apha-numerique 
+ */
 export default new GenerateCode();

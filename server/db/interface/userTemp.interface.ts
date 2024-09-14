@@ -1,10 +1,13 @@
 import { UserBaseInterface  } from '../interface';
 
+/**
+ * Interface pour les utilisateurs en cours d'enregistrement.
+ */
 export interface UserTempInterface extends UserBaseInterface{
 
-   /*
-     Methodes de sauvergarde d'un utilisateur temporaire.
-     soit comme user soit comme enseignant en attente.
-    */
+  /*
+    Méthodes de sauvergarde d'un utilisateur temporaire.
+    soit comme user soit comme enseignant en attente.
+  */
     savePerm():Promise<UserBaseInterface>;
 }

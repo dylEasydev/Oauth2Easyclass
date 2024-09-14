@@ -12,7 +12,7 @@ async function initData(){
     return new Promise<void>(async (resolve, reject) => {
         try {
             await sequelizeConnect.transaction(async t=>{
-                await Promise.all(scopeApp.map(async s=>{
+                await Promise.all((await scopeApp).map(async s=>{
                     await Scope.findOrCreate({
                         where:{scopeName:s.scopeName},
                         defaults:{

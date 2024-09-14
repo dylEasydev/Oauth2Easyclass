@@ -190,7 +190,6 @@ class UserService implements UserPermServiceInterface{
                     const expiresAt = new Date(Date.now());
                     expiresAt.setHours(expiresAt.getHours()+1);
                     const codeverif = generateCode.generateId(6);
-                    console.log(codeverif);
                     await newUser.createCodeVerif({
                         codeverif,
                         expiresAt

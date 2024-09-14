@@ -25,11 +25,13 @@ export class Client extends Model<
 
     declare userId: ForeignKey<UserPermInterface['id']>;
 
+    //objets de eagger logging
     declare user?: NonAttribute<UserPermInterface> |undefined;
     declare authCodes?: NonAttribute<AuthorizationCodeInterface[]> | undefined;
     declare images?: NonAttribute<ImageInterface> | undefined;
     declare infoClient?: NonAttribute<InfoClientInterface> | undefined;
 
+    //Methodes de Mixins 
     declare getUser:BelongsToGetAssociationMixin<UserPermInterface>;
     
     //alias des asssociations

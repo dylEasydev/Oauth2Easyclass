@@ -8,9 +8,12 @@ import {
 } from '../interface';
 import { NullishPropertiesOf } from 'sequelize/types/utils';
 
-
+/**
+ * Interface pour utilisateurs enregistrer ou permanent.
+ */
 export interface UserPermInterface extends UserBaseInterface{
     
+    //objets de eager logging (chargement impatient). ref:<< doc sequelize>>
     clients?:NonAttribute<ClientInterface[]>|undefined;
     tokens?:NonAttribute<TokenInterface[]>|undefined;
     authCodes?:NonAttribute<AuthorizationCodeInterface[]>|undefined;
@@ -18,9 +21,7 @@ export interface UserPermInterface extends UserBaseInterface{
     role?:NonAttribute<RoleInterface>|undefined; 
 
     /**
-     * 
-     * @param value 
-     * @param options 
+     * Crée une image associer à cette utilisateur permanent.  
      */
     createImage(
         value?:Optional<
@@ -29,5 +30,9 @@ export interface UserPermInterface extends UserBaseInterface{
         >,
         options?:CreateOptions<InferAttributes<ImageInterface>>
     ):Promise<ImageInterface>;
+
+    /**
+     * Crée le rôle associer à cette utilisateur . 
+    */
     createRole:HasOneCreateAssociationMixin<RoleInterface>;
 }

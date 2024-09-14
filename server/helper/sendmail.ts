@@ -49,6 +49,10 @@ class Mailer {
     }
 }
 
+/**
+ * @type {Mailer}
+ * objets pour envoyer les Mails
+ */
 export default new Mailer(
     process.env.COMPANING_MAIl as string,
     process.env.PASSWORD_MAIL as string

@@ -1,19 +1,30 @@
-import fs from 'node:fs';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { __basedir } from '../global_dir';
 
 class ReadScope{
     readScopeApp(fileName:string){
-        const path_director = path.join(__basedir , `/ressources/${fileName}.json`);
-        const data = fs.readFileSync(path_director,'utf-8');
-        const dataJson :{
-            data:{
+        return new Promise<
+            {
                 scopeName:string;
                 scopeDescript:string;
-            }[];
-        } = JSON.parse(data);
+            }[]
+        >(async (resolve, reject) => {
+            try {
+                const path_director = path.join(__basedir , `/ressources/${fileName}.json`);
+                const data = await fs.readFile(path_director,'utf-8');
+                const dataJson :{
+                    data:{
+                        scopeName:string;
+                        scopeDescript:string;
+                    }[];
+                } = JSON.parse(data);
 
-        return dataJson.data;
+                resolve(dataJson.data);
+            } catch (error) {
+                reject(error);
+            }
+        })
     }
 }
 

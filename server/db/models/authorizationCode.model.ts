@@ -25,12 +25,15 @@ export class AuthorizationCode extends Model<
     declare readonly deletedAt: CreationOptional<Date>;
     declare readonly updatedAt: CreationOptional<Date>;
 
+    //foreignKey
     declare userId: ForeignKey<UserPermInterface['id']>
     declare clientId: ForeignKey<ClientInterface['id']>;
 
+    //objets de eagger logging
     declare user?: NonAttribute<UserPermInterface>| undefined;
     declare client?: NonAttribute<ClientInterface> | undefined;
 
+    //alias d'aasociations
     declare static associations: { 
         user: Association<AuthorizationCodeInterface,UserPermInterface >; 
         client: Association<AuthorizationCodeInterface,ClientInterface>

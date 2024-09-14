@@ -6,6 +6,7 @@ import { CodeVerifInterface} from '../interface';
 import { CreateOptions } from 'sequelize';
 import { NullishPropertiesOf } from 'sequelize/types/utils';
 
+//Interface de base d'un utilisateur permanent ou temporaire . 
 export interface UserBaseInterface extends Model<
     InferAttributes<UserBaseInterface>,
     InferCreationAttributes<UserBaseInterface>
@@ -22,9 +23,7 @@ export interface UserBaseInterface extends Model<
 
     codeVerif?:NonAttribute<number> |undefined;
     /**
-     * 
-     * @param value 
-     * @param options 
+     * Crée un code de vérification associer à cette utilisateur 
      */
     createCodeVerif(
         value:Optional<

@@ -4,7 +4,10 @@ import {
 } from 'sequelize';
 import { UserPermInterface,ClientInterface } from '../interface';
 
-
+/**
+ * Interface du token de rafraichissement ,en cas d'expiration
+ * du jeton d'access 
+ */
 export interface RefreshToken extends Model<
     InferAttributes<RefreshToken>,
     InferCreationAttributes<RefreshToken>
@@ -15,9 +18,11 @@ export interface RefreshToken extends Model<
     refreshTokenExpiresAt:Date;
     scope:string[];
 
+    //foreignKey
     userId: ForeignKey<UserPermInterface['id']>
     clientId:ForeignKey<ClientInterface['id']>;
 
+    //objets de eagger logging
     user?:NonAttribute<UserPermInterface>|undefined;
     client?:NonAttribute<ClientInterface>|undefined;
 

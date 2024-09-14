@@ -5,6 +5,10 @@ import {
 import { UserBaseInterface, CodeVerifInterface } from '../interface';
 import { NullishPropertiesOf } from 'sequelize/types/utils';
 
+/**
+ * Model abstrait de la représentation d'un utilisateur 
+ * de base
+ */
 export abstract class UserBase extends Model implements UserBaseInterface{
 
     declare id: CreationOptional<number>;
@@ -16,12 +20,12 @@ export abstract class UserBase extends Model implements UserBaseInterface{
     declare readonly deletedAt: CreationOptional<Date>;
     declare readonly updatedAt: CreationOptional<Date>;
     
+    //objets de eagger logging.
     declare codeVerif?: NonAttribute<number> | undefined;
     
     /**
-     * 
-     * @param value 
-     * @param options 
+     * Methodes abstraite de creation d'un code de verification 
+     * associer à cette utilisateur
      */
     abstract createCodeVerif(
         value:Optional<

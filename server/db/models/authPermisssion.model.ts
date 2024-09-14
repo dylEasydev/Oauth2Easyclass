@@ -21,6 +21,7 @@ export class AuthPermission extends Model<
     declare readonly updatedAt:CreationOptional<Date>;
     declare readonly deletedAt:CreationOptional<Date>;
 
+    //objets de eagger logging
     declare scope?: NonAttribute<ScopeInterface> | undefined;
     declare role?: NonAttribute<RoleInterface> | undefined;
 

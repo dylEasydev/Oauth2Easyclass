@@ -8,7 +8,10 @@ import {
 } from '../interface';
 import { BelongsToGetAssociationMixin } from 'sequelize';
 
-
+/**
+ * Interface d'un client ( représentation d'une application utilisant notre
+ * service d'authentifiaction ).
+ */
 export interface ClientInterface extends Model<
     InferAttributes<ClientInterface>,
     InferCreationAttributes<ClientInterface>
@@ -26,23 +29,19 @@ export interface ClientInterface extends Model<
      */
     grants:string[];
 
-
+    //foreignKey
     userId:ForeignKey<UserPermInterface['id']>;
 
-
+    //objets de eagger logging
     user?:NonAttribute<UserPermInterface>|undefined;
     image?:NonAttribute<string>|undefined;
     authCodes?:NonAttribute<AuthorizationCodeInterface[]>|undefined;
     infoClient?:NonAttribute<InfoClientInterface> | undefined;
     tokens?:NonAttribute<TokenInterface[] >| undefined;
 
-    /**
-     * @param {BelongsToGetAssociationMixinOptions} options
-     * @returns {Promise<UserPermInterface>}
-     */
+  
     getUser:BelongsToGetAssociationMixin<UserPermInterface>;
 
-    //timestamps
     readonly createdAt:CreationOptional<Date>;
     readonly updatedAt:CreationOptional<Date>;
     readonly deletedAt:CreationOptional<Date>;

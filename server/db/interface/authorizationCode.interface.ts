@@ -4,7 +4,11 @@ import {
 } from 'sequelize';
 import { ClientInterface, UserPermInterface } from '../interface';
 
-
+/**
+ * interface de code d'authorisation fourni à un client 
+ * lors d'une demande d'authentification avec octroi 
+ * authorization_code
+ */
 export interface AuthorizationCodeInterface extends Model<
     InferAttributes<AuthorizationCodeInterface>,
     InferCreationAttributes<AuthorizationCodeInterface>
@@ -28,9 +32,11 @@ export interface AuthorizationCodeInterface extends Model<
      */
     codeChallengeMethod?:CreationOptional<string>;
 
+    //foreignKey
     userId:ForeignKey<UserPermInterface['id']>;
     clientId:ForeignKey<UserPermInterface['id']>;
-
+    
+    //objets de eagger logging
     user?:NonAttribute<UserPermInterface>|undefined;
     client?:NonAttribute<ClientInterface>|undefined;
 

@@ -10,8 +10,10 @@ import { CodeVerif, Image } from '../../db';
 import { NullishPropertiesOf } from 'sequelize/types/utils';
 import { UserBase } from './userBase.model';
 
+
 export class User extends UserBase implements UserPermInterface{
-     
+    
+    //objets de eagger logging
     declare clients?: NonAttribute<ClientInterface[]>| undefined;
     declare tokens?: NonAttribute<TokenInterface[]> | undefined;
     declare codeVerif?: NonAttribute<number> | undefined;
@@ -19,7 +21,7 @@ export class User extends UserBase implements UserPermInterface{
     declare authCodes?: NonAttribute<AuthorizationCodeInterface[]> |undefined;
     declare role?: NonAttribute<RoleInterface> | undefined;
 
-     
+    //alias d'associations du Model user .
     static associations: { 
         clients: Association<UserPermInterface, ClientInterface>; 
         tokens: Association<UserPermInterface, TokenInterface>;
@@ -28,10 +30,7 @@ export class User extends UserBase implements UserPermInterface{
     };
 
     /**
-     * 
-     * @param value 
-     * @param options 
-     * @returns {Promise<ImageInterface>}
+     * Méthodes de création d'une image associer à cette utilisateur 
      */
     createImage(
         value?:Optional<
@@ -55,10 +54,7 @@ export class User extends UserBase implements UserPermInterface{
         })
     }
     /**
-     * 
-     * @param value 
-     * @param options 
-     * @returns {Promise<CodeVerifInterface>}
+     *Méthodes de création d'un code de verifiaction associer à cette utilisateur.
      */ 
     createCodeVerif(
         value:Optional<
