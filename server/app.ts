@@ -1,15 +1,16 @@
-import express,{Application} from 'express';
+import express ,{Application} from 'express';
 import * as bodyParser from 'body-parser';
+import bridge from 'http2-express-bridge';
 import cors from 'cors';
 import{
     codeRoute,indexRoute,oauthRoute, signRoute
 }from './router';
 
 class ExpressApp{
-    public expressServer: Application;
+    public expressServer : Application;
 
     constructor(){
-        this.expressServer = express();
+        this.expressServer = bridge(express);
         this.configServer();
     }
 

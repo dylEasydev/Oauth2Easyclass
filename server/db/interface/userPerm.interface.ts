@@ -9,7 +9,7 @@ import {
 import { NullishPropertiesOf } from 'sequelize/types/utils';
 
 /**
- * Interface pour utilisateurs enregistrer ou permanent.
+ * Interface pour les utilisateurs enregistrer ou permanent.
  */
 export interface UserPermInterface extends UserBaseInterface{
     

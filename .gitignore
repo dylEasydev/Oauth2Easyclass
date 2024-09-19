@@ -3,3 +3,7 @@ package-lock.json
 dist/*
 .env
 .git
+*.crt
+*.csr
+*.key
+*.pem

@@ -36,7 +36,7 @@ et  lancer `npm install`
 
 ## configuration
 
-Créer un fichier `.env`àla racine du projet puis copiez le code si dessous à l'interieur .
+Créer un fichier `.env`à la racine du projet puis copiez le code si dessous à l'interieur .
 
 ```js
 
@@ -56,6 +56,14 @@ ADMIN_PASS = // mots de passe de l'admin
 
 ```
 
+Généré les clés pour securiséle serveur HTTP/2 . Vous auriez besionde [openssl]() .
+
+```
+openssl genrsa -out server.key 2048
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -days 365  -in server.csr -signkey server.key -out server.crt
+```
+
 j'ai rencontré quelques soucis avec le fichier de declartion de types de 
 la dépendances `@node-oauth/express-oauth-server` j'ai dù le modifier .
 le chemin d'accès de ce fichier est : 
@@ -72,7 +80,7 @@ Puis lancer le serveur avec la commande `node -r dotenv/config ./dist/server/ind
 ```js
 import axios from 'axios';
 const axiosRequest = axios.create({
-    baseURL:'http://localhost:3000/',
+    baseURL:'https://localhost:3000/',
     timeout:3000
 });
 const newStudent = axiosRequest.post('/sign/student').then((response)=>{
@@ -80,7 +88,7 @@ const newStudent = axiosRequest.post('/sign/student').then((response)=>{
 })
 ```
 ## Documentation
-la documentation est à l'adresse http://127.0.0.1:3000/docs .
+la documentation est à l'adresse https://127.0.0.1:3000/docs .
 son fichier html [ici](/docs/index.html) à enrichir si vous voulez bien . 
 
 ## conctact

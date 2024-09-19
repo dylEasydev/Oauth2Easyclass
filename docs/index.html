@@ -8,28 +8,30 @@
 <body>
     <header>
         <h1>Bienvenue sur la documentation de l'api d'authentification d'Easy class service .</h1>
-        <p>Cette documentation est destinée à ceux cnnaissant faire des appels http .</p>
+        <p>Cette documentation est destinée à ceux connaissant faire des appels http .</p>
     </header>
     
     <sections>
-        <h2> Point de terminaison: <strong>http://localhost:3000/docs</strong>.</h2>
+        <h2> Point de terminaison: <strong>https://localhost:3000/docs</strong>.</h2>
         <p> Type de méthode: <strong> GET. </strong></p>
         <p> Il permet d'accèder à la documentation de l'api Oauth2.0 D'easyClass</p>
     </sections>
 
     <sections>
-        <h2> Point de terminaison: <strong>http://localhost:3000/</strong> .</h2>
+        <h2> Point de terminaison: <strong>https://localhost:3000/</strong> .</h2>
         <p> Type de méthode:  <strong>GET</strong> .</p>
         <p> C'est le point de terminaison d'accueil !</p>
         <pre>
             <code>
-                {message:"Bienvenue sur oauth2-easyclass api !"}
+                {
+			"message": "Bienvenue sur oauth2-easyclass api !"
+		}
             </code>
         </pre>
     </sections>
 
     <section>
-        <h2> Point de terminaison :<strong>http://localhost:3000/code</strong> .</h2>
+        <h2> Point de terminaison :<strong>https://localhost:3000/code</strong> .</h2>
         <p> Type de Méthode: <strong>POST </strong>.</p>
         <p>Format du corps de la requête:<strong> application/x-www-form-urlencoded </strong>.</p>
         <p>
@@ -42,7 +44,7 @@
             <code>
                 {
                     "client_id":"15637", //Identifiant du client(application) qui demande le code d'authorisation
-                    "redirect_uri":"http://app.com/callback", //une des urls de redirection du client 
+                    "redirect_uri":"https://app.com/callback", //une des urls de redirection du client 
                     "scope": ,/*Les permissions qu'on veut pour l'utilisateur
                         exemple: 'created:admin,deleted:profil' ou 'created:admin' ou [created:admin,deleted:profil]
                     */
@@ -66,7 +68,7 @@
     </section>
     
     <section>
-        <h2> Point de terminaison:<strong> http://localhost:3000/login .</strong></h2>
+        <h2> Point de terminaison:<strong> https://localhost:3000/login .</strong></h2>
         <p> Type de méthode: <strong> POST.</strong></p>
         <p> Ce point de terminaison permet de founir un jeton jwt d'accès avec different octroi!</p>
         <section>
@@ -138,10 +140,10 @@
                         {
                             "grant_type" : "authorization_code",
                             "code":"",/*
-                            le code de verification obtenu avec le end point http://localhost/code
+                            le code de verification obtenu avec le end point https://localhost/code
                             */
                             "code_verifier":"",// c'est le code code_challenge avec le quels vous avec eu le code authorisation
-                            "redirect_uri":"http://app.com/callback"
+                            "redirect_uri":"https://app.com/callback"
                             "scope":"created:admin",
                             "client_id":"1899",
                             "client_secret":"aahjdkndhj"
@@ -195,7 +197,7 @@
     </section>
 
     <section>
-       <h2>Point de terminaison:<strong> http://localhost:3000/sign/teacher </strong></h2>
+       <h2>Point de terminaison:<strong> https://localhost:3000/sign/teacher </strong></h2>
        <p>Type de methode:<strong>POST</strong></p>
        <p> 
         Il permet d'initialiser la création d'un enseignants en le sauvegardant temporairement
@@ -232,7 +234,7 @@
     </section>
 
     <section>
-        <h2>Point de terminaison: <strong> http://localhost:3000/sign/student </strong></h2>
+        <h2>Point de terminaison: <strong> https://localhost:3000/sign/student </strong></h2>
         <p>type de methode:<strong> POST </strong></p>
         <p> 
          Il permet d'initialiser la création d'un étudiant en le sauvegardant temporairement
@@ -267,7 +269,7 @@
     </section>
 
     <section>
-        <h2>Point de terminaison:<strong> http://localhost:3000/sign/admin </strong></h2>
+        <h2>Point de terminaison:<strong> https://localhost:3000/sign/admin </strong></h2>
         <p>Type de methode: POST</p>
         <p> 
          Il est réserver au administrateur pour en créer d'autre . Faudra ajouter le jeton jwt à la demande
@@ -296,12 +298,12 @@
     </section>
 
     <section>
-        <h2>Point de terminaison:<strong> http://localhost:3000/verifCode/:id </strong> </h2>
+        <h2>Point de terminaison:<strong> https://localhost:3000/verifCode/:id </strong> </h2>
         <p>type de methode:<strong> POST </strong></p>
         <p> 
          Il permet de valider le code de verification envoyer par mail pour sauvegarder 
          de manière permanente l'utilisateur
-         exemple de formulation du point de terminaison :http://localhost:3000/verifCode/1
+         exemple de formulation du point de terminaison :https://localhost:3000/verifCode/1
         </p>
         <p>Corps de la requête</p>
         <pre>
@@ -330,11 +332,11 @@
     </section>
 
     <section>
-        <h2>Point de terminaison: <strong>http://localhost:3000/restartCode/:userName/:nametable </strong></h2>
+        <h2>Point de terminaison: <strong>https://localhost:3000/restartCode/:userName/:nametable </strong></h2>
         <p>type de methode:<strong> PUT </strong></p>
         <p> 
-         Il permet de rédemarrer un nouveau code de verif exemple : http://localhost:3000/restartCode/kamit/student,
-         http://localhost:3000/restartCode/kamit/teacher, http://localhost:3000/restartCode/kamit/user
+         Il permet de rédemarrer un nouveau code de verif exemple : https://localhost:3000/restartCode/kamit/student,
+         https://localhost:3000/restartCode/kamit/teacher, https://localhost:3000/restartCode/kamit/user
         </p>
         <p>Format de la reponses</p>
         <pre>
