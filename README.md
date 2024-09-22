@@ -90,7 +90,7 @@ copiez juste ce fichier et remplacer le contenu du fichier **`node_modules/@node
 ouvrez le terminal et lancez la commande `npm run dev` .
 
 pour les adepte de javascript vous pouvez compiler grâce à la commande `npm build`.
-Puis lancer le serveur avec la commande `node -r dotenv/config ./dist/server/index.js`
+Puis lancer le serveur avec la commande `node -r dotenv/config ./dist/index.js`
 
 ## exemple d'utilisation
 c'est une façon simple de faire  la création d'un étuiant .
