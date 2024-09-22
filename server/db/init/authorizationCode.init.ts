@@ -18,7 +18,7 @@ AuthorizationCode.init({
         type:DataTypes.STRING,
         allowNull:false,
         validate:{
-            isUrl:{msg:`enter une url de redirection valide`}
+            isUrl:{msg:`entrer une url de redirection valide`}
         },
         defaultValue:`http://easyclass.edu/login/callback`
     },
@@ -26,7 +26,7 @@ AuthorizationCode.init({
         type:DataTypes.DATE
     },
     scope:{
-        type:DataTypes.STRING,
+        type:DataTypes.TEXT,
         allowNull:false,
         get():string[]{
             const value:unknown = this.getDataValue('scope');

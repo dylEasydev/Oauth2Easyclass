@@ -15,8 +15,8 @@ Token.init({
         allowNull:false
     },
     refreshToken:{
-        type:DataTypes.STRING,
-        allowNull:false
+        type:DataTypes.TEXT,
+        allowNull:true
     },
     accessTokenExpiresAt:{
         type:DataTypes.DATE,
@@ -24,10 +24,10 @@ Token.init({
     },
     refreshTokenExpiresAt:{
         type:DataTypes.DATE,
-        allowNull:false
+        allowNull:true
     },
     scope:{
-        type:DataTypes.STRING,
+        type:DataTypes.TEXT,
         allowNull:false,
         get():string[]{
             const value:unknown = this.getDataValue('scope');

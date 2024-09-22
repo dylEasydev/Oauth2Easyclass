@@ -1,17 +1,18 @@
 import expressServer from './app';
 import http from 'node:http2';
 import fs from 'node:fs';
-import path from 'node:path';
+import { join }from 'node:path';
 import { __basedir } from './global_dir';
 
 export const launchHttpServer = ()=>{
     const port:unknown = process.env.PORT ;
     const hostName = process.env.HOSTNAME;
-    
+
+    //options du serveur sécurisé  HTTP/2 
     const options = {
-    	key:fs.readFileSync(path.join(__basedir,'server.key')),
-    	cert:fs.readFileSync(path.join(__basedir ,'server.crt')),
-        allowHTTP1:true
+    	key:fs.readFileSync(join(__basedir,'server.key')),
+    	cert:fs.readFileSync(join(__basedir ,'server.crt')),
+        allowHTTP1:true //passage à HTTTP/1.1 pour les client ne supportant pas  HTTP/2
     }
     
     const authServer = http.createSecureServer(options,expressServer);

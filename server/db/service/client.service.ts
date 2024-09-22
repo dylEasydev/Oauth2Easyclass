@@ -215,7 +215,7 @@ class ClientService implements ClientServiceInterface{
             try {
                 const userFind = await sequelizeConnect.transaction(async t =>{
                     return await client.getUser({
-                        attributes:{
+                                    attributes:{
                             include:[
                                 [
                                     sequelizeConnect.literal(
@@ -223,17 +223,17 @@ class ClientService implements ClientServiceInterface{
                                         `(
                                         SELECT urlPictures FROM image as picture
                                         WHERE 
-                                            picture.foreignId = user.id
+                                            picture.foreignId = User.id
                                             AND
-                                            picture.nametable = "user"
-                                        LIMIT
-                                    )`:`(
-                                        SELECT urlPictures FROM image as picture
+                                            picture.nameTable ="user"
+                                        LIMIT 1
+                                    )`:  `(
+                                        SELECT "urlPictures" FROM "image"
                                         WHERE 
-                                            picture."foreignId" = "user"."id"
+                                            "foreignId" = "User"."id"
                                             AND
-                                            picture."nametable" = "user"
-                                        LIMIT
+                                            "nameTable" ='user'
+                                        LIMIT 1
                                     )`),`image`
                                 ],
                                 [
@@ -242,16 +242,16 @@ class ClientService implements ClientServiceInterface{
                                         `(
                                         SELECT codeverif FROM codeVerif as code
                                         WHERE 
-                                            code.foreignId = user.id
+                                            code.foreignId = User.id
                                             AND
                                             code.nameTable = "user"
                                         LIMIT 1
-                                    )`: `(
-                                        SELECT codeverif FROM codeVerif as code
+                                    )`:  `(
+                                        SELECT "codeverif" FROM "codeVerif"
                                         WHERE 
-                                            code."foreignId" = "user"."id"
+                                            "foreignId" = "User"."id"
                                             AND
-                                            code."nameTable" = "user"
+                                            "nameTable" = 'user'
                                         LIMIT 1
                                     )`),`codeVerif`
                                 ]

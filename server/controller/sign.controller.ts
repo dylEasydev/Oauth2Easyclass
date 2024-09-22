@@ -22,7 +22,7 @@ export class SignController extends BaseController{
                 return statusResponse.sendResponseJson(
                     CodeStatut.CLIENT_STATUS,
                     res,
-                    `l'utilisateur ${userName} possède déjà un compte !`
+                    `L'utilisateur ${userName} possède déjà un compte !`
                 )
             }
             const teacherTemp = await teacherService.createUser({
@@ -49,7 +49,7 @@ export class SignController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
+                `Erreur au niveau du serveur , réessayez dans quelques instants !`,
                 error
             );
         }
@@ -97,7 +97,7 @@ export class SignController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
+                `Erreur au niveau du serveur , réessayez dans quelques instants !`,
                 error
             );
         }
@@ -137,7 +137,7 @@ export class SignController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
+                `Erreur au niveau du serveur , réessayez dans quelques instants !`,
                 error
             );
         }

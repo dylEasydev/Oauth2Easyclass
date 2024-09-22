@@ -3,12 +3,12 @@ import nodemailer, { Transporter } from 'nodemailer';
 class Mailer {
     private _mail:string;
     private _password:string;
-    private transporter:Transporter;
+    private _transporter:Transporter;
 
     constructor(mail:string,password:string){
         this._mail = mail;
         this._password = password;
-        this.transporter = nodemailer.createTransport({
+        this._transporter = nodemailer.createTransport({
             host: 'smtp.office365.com',
             port:587,
             secure:false,
@@ -36,13 +36,14 @@ class Mailer {
                     <title>auth Code</title>
                 </head>
                 <body>
+                    <p>code de verification  veillez ne pas le divulger </p>
                     <pre>
                         ${msg}
                     </pre>
                 </body>
                 </html>`
             }
-            this.transporter.sendMail(mailOptions).then(()=>{
+            this._transporter.sendMail(mailOptions).then(()=>{
                 resolve()
             }).catch(error => reject(error))
         })

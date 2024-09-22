@@ -1,7 +1,7 @@
 import ExpressOAuthServer from '@node-oauth/express-oauth-server';
 import { modelOauth } from '../oauth';
 import { BaseController } from './base.controller';
-import {InvalidArgumentError,Request,Response} from '@node-oauth/oauth2-server'
+import {InvalidArgumentError,Request,Response} from '@node-oauth/oauth2-server';
 import { UserPermInterface } from '../db/interface';
 import { NotFountError } from '../db/service';
 
@@ -25,7 +25,7 @@ class OauthController extends BaseController{
                     throw new InvalidArgumentError('Invalid argument:`username` and `userPass`');
                 }
                 const user = await modelOauth.getUser(username,password);
-                if(user === null) reject(new NotFountError(`Invalid argument:'user'`));
+                if(user === null) reject(new NotFountError('Invalid argument:`user`'));
                 else resolve(user);
             } catch (error) {
                 reject(error);

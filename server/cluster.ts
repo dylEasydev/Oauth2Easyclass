@@ -13,7 +13,7 @@ export const launchCluster = ()=>{
     }
 
     cluster.on('online',(worker)=>{
-        console.log(`Worker ${worker.process.pid} is listening`);
+        console.log(`Worker ${worker.process.pid} écoute ...`);
     })
 
     cluster.on('exit',(worker,code,signal)=>{

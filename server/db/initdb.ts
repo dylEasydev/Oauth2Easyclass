@@ -43,7 +43,7 @@ async function initData(){
                         'password',
                         'refresh_token'
                     ],
-                    redirectUris:[`https://easyclass.edu/callback`]
+                    redirectUris:[`https://127.0.0.1:3000/docs`]
                 }
             });
             resolve();

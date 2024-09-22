@@ -38,7 +38,7 @@ Client.init({
         }
     },
     redirectUris:{
-        type:DataTypes.STRING,
+        type:DataTypes.TEXT,
         allowNull:false,
         validate:{
             validAllUrl(value:string){

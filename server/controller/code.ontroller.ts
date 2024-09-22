@@ -22,7 +22,7 @@ export class CodeVerifController extends BaseController{
                     return statusResponse.sendResponseJson(
                         CodeStatut.CLIENT_STATUS,
                         res,
-                        `Le code de verification à expirer !!`
+                        `Le code de vérification à expirer !`
                     )
                 }
                 const user = await codeVerifService.getForeingData(codeUser);
@@ -30,7 +30,7 @@ export class CodeVerifController extends BaseController{
                     return statusResponse.sendResponseJson(
                         CodeStatut.NOT_PERMISSION_STATUS,
                         res,
-                        `Ce end point est réservé au utilisateur temporaire`
+                        `Ce end-point est réservé aux utilisateurs temporaires !`
                     )
                 }
                 const userPerm = await userTempService.saveUser(user as UserTempInterface);
@@ -62,7 +62,7 @@ export class CodeVerifController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
+                `Erreur au niveau du serveur , réessayez dans quelques instants !`,
                 error
             );
         }
@@ -106,7 +106,7 @@ export class CodeVerifController extends BaseController{
             return statusResponse.sendResponseJson(
                 CodeStatut.SERVER_STATUS,
                 res,
-                `Erreur survenue au niveau du serveur , réesayez dans quelques instants !!`,
+                `Erreur au niveau du serveur , réessayez dans quelques instants !`,
                 error
             );
         }
