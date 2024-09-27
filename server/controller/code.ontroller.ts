@@ -13,7 +13,7 @@ export class CodeVerifController extends BaseController{
     async verifieCode(req:Request , res:Response){
         try {
             if(req.params.id){
-                const id = parseInt(req.params.id);
+                const id = isNaN(parseInt(req.params.id))?0:parseInt(req.params.id);
                 let {codeverif} = req.body;
                 if(typeof codeverif !== 'number') codeverif = typeof codeverif === 'string'? parseInt(codeverif):0;
 

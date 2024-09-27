@@ -21,7 +21,7 @@ StudentTemp.afterCreate((student , options)=>{
         student.createCodeVerif({
             codeverif:parseInt(generateCode.generateId(6)),
             expiresAt
-        },{transaction:options.transaction,hooks:false})
+        },{transaction:options.transaction,hooks:true})
         .then(code=>resolve()).catch(error=> reject(error));
     })
 })

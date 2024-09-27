@@ -60,7 +60,7 @@ class CodeVerifService implements CodeVerifInterfaceService{
                             return beforeCode.update({
                                 codeverif:parseInt(generateCode.generateId(6)),
                                 expiresAt
-                            },{hooks:false});
+                            },{hooks:true});
                         })
                         resolve(codeVerif)
                     }
